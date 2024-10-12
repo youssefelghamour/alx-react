@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -11,6 +12,6 @@ h1 {
 #logo {
     width: 200px;
     height: 200px;
-    background: url('../assets/holberton-logo.jpg');
+    background: url('../../assets/holberton-logo.jpg');
     background-size: 200px 200px;
 }
