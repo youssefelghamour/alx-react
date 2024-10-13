@@ -1,0 +1,53 @@
+:root {
+  --color-primary: #e0354b;
+}
+
+body {
+  margin: 0;
+}
+
+
+/* Header ============================= */
+
+.App-header {
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+  border-bottom: 4px solid;
+  width: 100%;
+}
+
+.App-header img {
+  width: 18rem;
+}
+
+.App-header h1 {
+  font-family: sans-serif;
+  font-size: 2.5rem;
+}
+
+
+/* Body ============================= */
+
+.App-body {
+  margin: 5rem 4rem;
+  font-size: 1.4rem;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+
+/* Footer ============================= */
+
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  font-weight: 400;
+  border-top: solid 4px var(--color-primary);
+  font-style: italic;
+}
