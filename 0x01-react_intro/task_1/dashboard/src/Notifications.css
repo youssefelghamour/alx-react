@@ -1,0 +1,10 @@
+.Notifications {
+    padding: 0 1rem;
+    border-top: 3px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.Notifications p {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
