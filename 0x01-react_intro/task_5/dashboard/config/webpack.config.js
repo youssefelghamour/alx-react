@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, 'dist'),
         clean: true, // Clean the output directory before emit
     },
     mode: 'development',
@@ -16,6 +16,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: 'babel-loader',
+            },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
@@ -32,7 +37,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Webpack App',
-            template: 'src/index.html',
+            template: './dist/index.html',
         }),
     ],
 };
