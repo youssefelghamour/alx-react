@@ -1,0 +1,20 @@
+.Notifications {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1.6px dashed var(--color-primary);
+}
+
+.Notifications p {
+    font-size: 1rem;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+ul li[data-notification-type="default"] {
+    color: rgb(0, 0, 109);
+}
+
+ul li[data-notification-type="urgent"] {
+    color: rgb(222, 0, 0);
+}
