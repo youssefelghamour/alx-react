@@ -15,10 +15,12 @@ class BodySection extends Component {
 
 BodySection.propTypes = {
     title: PropTypes.string,
+    children: PropTypes.node,
 }
 
 BodySection.defaultProps = {
     title: '',
+    children: null,
 }
 
 export default BodySection;
