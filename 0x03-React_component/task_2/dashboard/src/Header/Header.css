@@ -1,0 +1,23 @@
+:root {
+    --color-primary: #e0354b;
+}
+
+
+/* Header ============================= */
+
+.App-header {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+    border-bottom: 3px solid;
+    width: 100%;
+}
+
+.App-header img {
+    width: 12rem;
+}
+
+.App-header h1 {
+    font-family: sans-serif;
+    font-size: 1.8rem;
+}
