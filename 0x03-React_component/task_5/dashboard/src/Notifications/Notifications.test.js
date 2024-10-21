@@ -81,4 +81,31 @@ describe('<Notifications />', () => {
         expect(consoleSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
         consoleSpy.mockRestore();
     });
+
+    const listNotifications = [
+        { id: 1, type: 'default', value: 'New course available' },
+        { id: 2, type: 'urgent', value: 'New resume available' },
+    ];
+
+    it('does not re-render with the same list', () => {
+        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+        const instance = wrapper.instance();
+        jest.spyOn(instance, 'shouldComponentUpdate');
+
+        // Simulate changing the props of the Notifications component after it has already been rendered
+        wrapper.setProps({ listNotifications });
+        expect(instance.shouldComponentUpdate).toHaveBeenCalledTimes(1);
+    });
+
+    it('re-renders with a longer list', () => {
+        const newListNotifications = [
+            ...listNotifications,
+            { id: 3, type: 'default', value: 'Another notification' },
+        ];
+
+        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+        // Simulate changing the props of the Notifications component after it has already been rendered
+        wrapper.setProps({ listNotifications: newListNotifications });
+        expect(wrapper.find(NotificationItem).length).toBe(3);
+    });
 });
