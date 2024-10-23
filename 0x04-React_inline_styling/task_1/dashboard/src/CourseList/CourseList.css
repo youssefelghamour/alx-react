@@ -1,0 +1,9 @@
+thead tr:first-of-type th {
+    text-align: center;
+    border-bottom: 2px solid lightgrey;
+}
+
+th {
+    border-bottom: 2px solid lightgrey;
+    padding: 5px 0;
+}
