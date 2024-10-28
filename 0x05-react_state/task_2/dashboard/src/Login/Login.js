@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import PropTypes from 'prop-types';
 
 
 class Login extends Component {
@@ -60,6 +61,14 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  logIn: PropTypes.func,
+};
+
+Login.defaultProps = {
+  logIn: () => {},
+};
 
 const styles = StyleSheet.create({
   loginContainer: {

@@ -16,15 +16,16 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      displayDrawer: false,
-      user: user, // user and logOut from AppContext.js
-      logOut: logOut
-    };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.state = {
+      displayDrawer: false,
+      user: user, // user from AppContext.js
+      logOut: this.logOut
+    };
+    
   }
 
   handleDisplayDrawer() {
@@ -72,7 +73,7 @@ class App extends Component {
   render () {
 
     return (
-      <React.Fragment>
+      <AppContext.Provider value={{ user: this.state.user, logOut: this.state.logOut }}>
         <Notifications 
           listNotifications={ listNotifications }
           displayDrawer={this.state.displayDrawer}
@@ -104,7 +105,7 @@ class App extends Component {
             <Footer />
           </div>
         </div>
-      </React.Fragment>
+      </AppContext.Provider>
     );
   }
 }
