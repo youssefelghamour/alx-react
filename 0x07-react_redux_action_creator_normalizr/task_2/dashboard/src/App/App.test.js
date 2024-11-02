@@ -1,0 +1,89 @@
+import { mount, shallow } from 'enzyme';
+import App from './App';
+import Notifications from '../Notifications/Notifications';
+import Header from '../Header/Header';
+import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
+import CourseList from '../CourseList/CourseList';
+
+
+describe('<App />', () => {
+    it('contains the Notifications component', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.contains(<Notifications />)).toBeTruthy();
+    });
+
+    it('contains the Header component', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.contains(<Header />)).toBeTruthy();
+    });
+
+    it('contains the Login component', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.contains(<Login />)).toBeTruthy();
+    });
+
+    it('contains the Footer component', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.contains(<Footer />)).toBeTruthy();
+    });
+
+    it('CourseList is not displayed when not logged in', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.contains(<CourseList />)).toBeFalsy();
+    });
+
+    it('displays the alert Logging you out and calls the function logOut when ctrl+h is pressed', () => {
+        // Mock the logOut function
+        const logOutMock = jest.fn();
+        // Mock window.alert
+        window.alert = jest.fn();
+
+        // Mount the App component
+        const wrapper = mount(<App logOut={ logOutMock } />);
+
+        // Simulate pressing Ctrl+h
+        const event = new KeyboardEvent('keydown', {
+            ctrlKey: true,
+            key: 'h',
+        });
+        document.dispatchEvent(event);
+
+        expect(window.alert).toHaveBeenCalledWith('Logging you out');
+        expect(logOutMock).toHaveBeenCalled();
+
+        // Clean up the alert mock
+        window.alert.mockRestore();
+    });
+
+    it('default state of displayDrawer is false', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.state('displayDrawer')).toBe(false);
+      });
+    
+    it('handleDisplayDrawer sets displayDrawer to true', () => {
+        const wrapper = shallow(<App />);
+        wrapper.instance().handleDisplayDrawer(); // Call the function
+        expect(wrapper.state('displayDrawer')).toBe(true);
+    });
+    
+    it('handleHideDrawer sets displayDrawer to false', () => {
+        const wrapper = shallow(<App />);
+        wrapper.instance().handleDisplayDrawer(); // First set to true
+        wrapper.instance().handleHideDrawer(); // Then false
+        expect(wrapper.state('displayDrawer')).toBe(false);
+    });
+});
+
+
+describe('<App isLoggedIn={ true } />', () => {
+    it('does not contains the Login component', () => {
+        const wrapper = shallow(<App isLoggedIn={ true } />);
+        expect(wrapper.contains(<Login />)).toBeFalsy();
+    });
+
+    it('CourseList is included', () => {
+        const wrapper = shallow(<App isLoggedIn={ true } />);
+        expect(wrapper.contains(<CourseList />)).toBeTruthy();
+    });
+});
