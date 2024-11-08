@@ -81,6 +81,7 @@ class App extends Component {
   };
 
   render () {
+    const { isLoggedIn } = this.props;
 
     return (
       <AppContext.Provider value={{ user: this.state.user, logOut: this.state.logOut }}>
@@ -96,7 +97,7 @@ class App extends Component {
           <Header />
 
           <div className={css(styles.body)} >
-            { this.state.user.isLoggedIn ? (
+            { isLoggedIn ? (
                 <BodySectionWithMarginBottom title="Course list">
                   <CourseList listCourses={ listCourses } />
                 </BodySectionWithMarginBottom>
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
 });
 
 export const mapStateToProps = (state) => ({
-  isLoggedIn: state.isUserLoggedIn,
+  isLoggedIn: state.get('isUserLoggedIn'),
 });
 
 export default connect(mapStateToProps)(App);
