@@ -1,10 +1,11 @@
 import { mount, shallow } from 'enzyme';
-import App from './App';
+import App, { mapStateToProps } from './App';
 import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
+import { fromJS } from 'immutable';
 
 
 describe('<App />', () => {
@@ -85,5 +86,12 @@ describe('<App isLoggedIn={ true } />', () => {
     it('CourseList is included', () => {
         const wrapper = shallow(<App isLoggedIn={ true } />);
         expect(wrapper.contains(<CourseList />)).toBeTruthy();
+    });
+});
+
+describe('mapStateToProps', () => {
+    it('returns the right object', () => {
+        let state = fromJS({ isUserLoggedIn: true });
+        expect(mapStateToProps(state)).toEqual({ isLoggedIn: true });
     });
 });
