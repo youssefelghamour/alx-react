@@ -18,7 +18,12 @@ class Header extends Component {
       <div className={css(styles.AppHeader)}>
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
           <h1 className={css(styles.h1)} >School dashboard</h1>
-          { user ? (
+          {/* user.email to confirm the user is logged in and has an email
+
+              The whole user object is {} when the user isn't logged in,
+              or set to null when the user logs out. In both case the check will be false
+          */}
+          { user && user.email ? (
               <p id="logoutSection" className={css(styles.logOut)}>
                 Welcome {user.email}
                 <span onClick={logout} className={css(styles.logOutButton)}> logout</span>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
@@ -12,7 +12,7 @@ import { StyleSheet, css } from 'aphrodite';
 import AppContext, { logOut, user } from './AppContext';
 import { UiInitialState } from '../reducers/uiReducer';
 import { connect } from 'react-redux';
-import { displayNotificationDrawer, hideNotificationDrawer, loginRequest, logout } from '../actions/uiActionCreators';
+import { displayNotificationDrawer, hideNotificationDrawer, login, loginRequest, logout } from '../actions/uiActionCreators';
 
 
 class App extends Component {
@@ -55,10 +55,10 @@ class App extends Component {
   };
 
   render () {
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login, logout } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, loginRequest, logout } = this.props;
 
     return (
-      <AppContext.Provider value={{ user: this.state.user, logOut: logout }}>
+      <Fragment>
         <Notifications 
           listNotifications={ this.state.listNotifications }
           displayDrawer={displayDrawer}
@@ -77,7 +77,7 @@ class App extends Component {
                 </BodySectionWithMarginBottom>
               ) : ( 
                 <BodySectionWithMarginBottom title="Log in to continue" >
-                  <Login logIn={login}/>
+                  <Login logIn={loginRequest}/>
                 </BodySectionWithMarginBottom>
               )
             }
@@ -91,7 +91,7 @@ class App extends Component {
             <Footer />
           </div>
         </div>
-      </AppContext.Provider>
+      </Fragment>
     );
   }
 }
@@ -155,6 +155,7 @@ export const mapDispatchToProps = {
   displayNotificationDrawer,
   hideNotificationDrawer,
   loginRequest,
+  login,
   logout,
 };
 

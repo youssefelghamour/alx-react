@@ -8,7 +8,7 @@ function Footer(props) {
   return (
     <div>
       <p>Copyright { getFullYear() } - { getFooterCopy(true) }</p>
-      { user && (
+      { user && user.email && (
         <p><a href="#">Contact us</a></p>
       )}
     </div>
