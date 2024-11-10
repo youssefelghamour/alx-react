@@ -49,7 +49,7 @@ class App extends Component {
   handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'h') {
       alert("Logging you out");
-      this.props.logOut();
+      this.props.logOut;
       window.removeEventListener('keydown', this.handleKeyDown);
     }
   };
