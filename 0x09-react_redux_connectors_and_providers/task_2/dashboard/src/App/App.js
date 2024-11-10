@@ -58,7 +58,7 @@ class App extends Component {
     const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login, logout } = this.props;
 
     return (
-      <AppContext.Provider value={{ user: this.state.user, logOut }}>
+      <AppContext.Provider value={{ user: this.state.user, logOut: logout }}>
         <Notifications 
           listNotifications={ this.state.listNotifications }
           displayDrawer={displayDrawer}
