@@ -12,38 +12,22 @@ import { StyleSheet, css } from 'aphrodite';
 import AppContext, { logOut, user } from './AppContext';
 import { UiInitialState } from '../reducers/uiReducer';
 import { connect } from 'react-redux';
-import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
+import { displayNotificationDrawer, hideNotificationDrawer, loginRequest, logout } from '../actions/uiActionCreators';
 
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.logIn = this.logIn.bind(this);
-    this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
 
     this.state = {
       user: user, // user from AppContext.js
-      logOut: this.logOut,
       listNotifications: listNotifications, // Defined below
     };
     
   }
 
-  logIn(email, password) {
-    this.setState({
-      user: {
-        email: email,
-        password: password,
-        isLoggedIn: true,
-      }
-    });
-  }
-
-  logOut() {
-    this.setState({ user: user }); // Default to user object imported from AppContext.js
-  }
 
   markNotificationAsRead(id) {
     // Removes the nofitication with the id from the listNotifications in state
@@ -71,10 +55,10 @@ class App extends Component {
   };
 
   render () {
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login, logout } = this.props;
 
     return (
-      <AppContext.Provider value={{ user: this.state.user, logOut: this.state.logOut }}>
+      <AppContext.Provider value={{ user: this.state.user, logOut }}>
         <Notifications 
           listNotifications={ this.state.listNotifications }
           displayDrawer={displayDrawer}
@@ -93,7 +77,7 @@ class App extends Component {
                 </BodySectionWithMarginBottom>
               ) : ( 
                 <BodySectionWithMarginBottom title="Log in to continue" >
-                  <Login logIn={this.logIn}/>
+                  <Login logIn={login}/>
                 </BodySectionWithMarginBottom>
               )
             }
@@ -117,6 +101,8 @@ App.propTypes = {
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func,
   hideNotificationDrawer: PropTypes.func,
+  loginRequest: PropTypes.func,
+  logout: PropTypes.func,
 };
 
 App.defaultProps = {
@@ -124,6 +110,8 @@ App.defaultProps = {
   displayDrawer: false,
   displayNotificationDrawer: () => {},
   hideNotificationDrawer: () => {},
+  loginRequest: () => {},
+  logout: () => {},
 };
 
 const listCourses = [
@@ -166,6 +154,8 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = {
   displayNotificationDrawer,
   hideNotificationDrawer,
+  loginRequest,
+  logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
