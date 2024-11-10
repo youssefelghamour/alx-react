@@ -61,19 +61,6 @@ describe('<App />', () => {
         const wrapper = shallow(<App />);
         expect(wrapper.state('displayDrawer')).toBe(false);
       });
-    
-    it('handleDisplayDrawer sets displayDrawer to true', () => {
-        const wrapper = shallow(<App />);
-        wrapper.instance().handleDisplayDrawer(); // Call the function
-        expect(wrapper.state('displayDrawer')).toBe(true);
-    });
-    
-    it('handleHideDrawer sets displayDrawer to false', () => {
-        const wrapper = shallow(<App />);
-        wrapper.instance().handleDisplayDrawer(); // First set to true
-        wrapper.instance().handleHideDrawer(); // Then false
-        expect(wrapper.state('displayDrawer')).toBe(false);
-    });
 });
 
 
@@ -91,7 +78,7 @@ describe('<App isLoggedIn={ true } />', () => {
 
 describe('mapStateToProps', () => {
     it('returns the right object', () => {
-        let state = fromJS({ isUserLoggedIn: true });
-        expect(mapStateToProps(state)).toEqual({ isLoggedIn: true });
+        let state = fromJS({ isUserLoggedIn: true, isNotificationDrawerVisible: true });
+        expect(mapStateToProps(state)).toEqual({ isLoggedIn: true, displayDrawer: true });
     });
 });
