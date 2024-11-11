@@ -1,25 +1,28 @@
-import { FETCH_NOTIFICATIONS_SUCCESS, MARK_AS_READ, SET_TYPE_FILTER } from "../actions/notificationActionTypes";
+import { FETCH_NOTIFICATIONS_SUCCESS, MARK_AS_READ, SET_LOADING_STATE, SET_TYPE_FILTER } from "../actions/notificationActionTypes";
 import { Map } from 'immutable';
 import { normalizedData, notificationsNormalizer } from "../schema/notifications";
 
 
 export const initialStateNotification = Map({
     filter: "DEFAULT",
-    notifications: [],
+    notifications: {},
+    loading: false,
 });
 
 export const notificationReducer = (state = initialStateNotification, action) => {
     switch (action.type) {
         case FETCH_NOTIFICATIONS_SUCCESS:
-            const notificationsNormalizedData = notificationsNormalizer(action.data).notifications;
-            Object.keys(notificationsNormalizedData).forEach(id => {
-                notificationsNormalizedData[id].isRead = false;
+            const data = notificationsNormalizer(action.data).notifications;
+            Object.keys(data).forEach(id => {
+                data[id].isRead = false;
             });
-            return state.set('notifications', notificationsNormalizedData);
+            return state.mergeDeep({ notifications: data });
         case MARK_AS_READ:
             return state.setIn(['notifications', String(action.index), 'isRead'], true);
         case SET_TYPE_FILTER:
             return state.set('filter', action.filter);
+        case SET_LOADING_STATE:
+            return state.set('loading', action.loading);
         default:
             return state;
     }
@@ -65,7 +68,8 @@ Map({
     '1': { id: 1, type: "default", value: "New course available", isRead: false },
     '2': { id: 2, type: "urgent",  value: "New resume available", isRead: false },
     '3': { id: 3, type: "urgent",  value: "New data available",   isRead: false },
-  }
+  },
+  loading: false,
 })
 
 

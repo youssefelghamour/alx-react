@@ -17,9 +17,9 @@ export const setNotificationFilter = (filter) => ({
 export const boundSetNotificationFilter = (filter) => dispatch(setNotificationFilter(filter));
 
 
-export const setLoadingState = (isLoading) => ({
+export const setLoadingState = (loading) => ({
     type: SET_LOADING_STATE,
-    isLoading,
+    loading,
 });
 
 
