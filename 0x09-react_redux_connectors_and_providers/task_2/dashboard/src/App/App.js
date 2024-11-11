@@ -15,14 +15,13 @@ import { connect } from 'react-redux';
 import { displayNotificationDrawer, hideNotificationDrawer, login, loginRequest, logout } from '../actions/uiActionCreators';
 
 
-class App extends Component {
+export class App extends Component {
 
   constructor(props) {
     super(props);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
 
     this.state = {
-      user: user, // user from AppContext.js
       listNotifications: listNotifications, // Defined below
     };
     

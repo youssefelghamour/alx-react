@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/uiActionCreators';
 
 
-class Header extends Component {
+export class Header extends Component {
   constructor(props) {
     super(props);
   }

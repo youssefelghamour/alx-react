@@ -1,5 +1,5 @@
-import { mount, shallow } from 'enzyme';
-import App, { mapStateToProps } from './App';
+import { shallow } from 'enzyme';
+import { App, mapStateToProps } from './App';
 import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -41,14 +41,10 @@ describe('<App />', () => {
         window.alert = jest.fn();
 
         // Mount the App component
-        const wrapper = mount(<App logOut={ logOutMock } />);
+        const wrapper = shallow(<App logOut={ logOutMock } />);
 
-        // Simulate pressing Ctrl+h
-        const event = new KeyboardEvent('keydown', {
-            ctrlKey: true,
-            key: 'h',
-        });
-        document.dispatchEvent(event);
+        // Directly simulate pressing Ctrl+h event on the wrapper's instance
+        wrapper.instance().handleKeyDown({ ctrlKey: true, key: 'h' });
 
         expect(window.alert).toHaveBeenCalledWith('Logging you out');
         expect(logOutMock).toHaveBeenCalled();

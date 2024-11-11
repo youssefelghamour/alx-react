@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 import { connect } from 'react-redux';
 
-function Footer(props) {
+export function Footer(props) {
   const { user } = props;
   
   return (
