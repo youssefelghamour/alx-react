@@ -122,4 +122,10 @@ describe('<Notifications />', () => {
         wrapper.find('.close-button').simulate('click');
         expect(handleHideDrawer).toHaveBeenCalled();
     });
+
+    it('calls fetchNotifications when the component is mounted', () => {
+        shallow(<Notifications />);
+        // Check if fetchNotifications was called after mounting
+        expect(fetchNotifications).toHaveBeenCalled();
+    });
 });
