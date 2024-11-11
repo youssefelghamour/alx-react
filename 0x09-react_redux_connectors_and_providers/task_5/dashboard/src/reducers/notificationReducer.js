@@ -12,9 +12,9 @@ export const initialStateNotification = Map({
 export const notificationReducer = (state = initialStateNotification, action) => {
     switch (action.type) {
         case FETCH_NOTIFICATIONS_SUCCESS:
-            const data = notificationsNormalizer(action.data).notifications;
-            Object.keys(data).forEach(id => {
-                data[id].isRead = false;
+            const data = notificationsNormalizer(action.data);
+            Object.keys(data.notifications).forEach(id => {
+                data.notifications[id].isRead = false;
             });
             return state.mergeDeep({ notifications: data });
         case MARK_AS_READ:
@@ -34,42 +34,86 @@ FETCH_NOTIFICATIONS_SUCCESS action:
 {
     type: FETCH_NOTIFICATIONS_SUCCESS,
     data: [
-        { id: 1, type: "default", value: "New course available" },
-        { id: 2, type: "urgent",  value: "New resume available" },
-        { id: 3, type: "urgent",  value: "New data available"   }
+        {
+            "id": "5debd76480edafc8af244228",
+            "author": {
+            "id": "5debd764a7c57c7839d722e9",
+            "name": {
+                "first": "Poole",
+                "last": "Sanders"
+            },
+            "email": "poole.sanders@holberton.nz",
+            "picture": "http://placehold.it/32x32",
+            "age": 25
+            },
+            "context": {
+            "guid": "2d8e40be-1c78-4de0-afc9-fcc147afd4d2",
+            "isRead": true,
+            "type": "urgent",
+            "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
+            }
+        },
+        ...
     ]
 };
 
 notificationsNormalizer(action.data) would look like this:
-
-users and messages are still present in the normalized output but they are empty objects
-because the original data did not contain any references to users or messages
-
-but author and context are not included in the notifications,
-if no data is included (user and messages), they're only
-referenced if there's data for them
-
 {
-    users: {},  // Empty because no user data in the original action.data
-    messages: {}, // Empty because no message data in the original action.data
-    notifications: {
-        '1': { id: 1, type: "default", value: "New course available" },
-        '2': { id: 2, type: "urgent",  value: "New resume available" },
-        '3': { id: 3, type: "urgent",  value: "New data available"   },
+    users: {
+      'userId1': { id: 'userId1', name: { first: 'FirstName1', last: 'LastName1' }, email: 'user1@example.com', picture: 'http://placehold.it/32x32', age: 25 },
+      'userId2': { id: 'userId2', name: { first: 'FirstName2', last: 'LastName2' }, email: 'user2@example.com', picture: 'http://placehold.it/32x32', age: 30 },
+      ...
     },
-    result: [1, 2, 3]
+    messages: {
+      'messageId1': { guid: 'guid1', isRead: true , type: 'urgent', value: 'This is the content of message 1.' },
+      'messageId2': { guid: 'guid2', isRead: false, type: 'urgent', value: 'This is the content of message 2.' },
+      ...
+    },
+    notifications: {
+      'notificationId1': { id: 'notificationId1', author: 'userId1', context: 'messageId1' },
+      'notificationId2': { id: 'notificationId2', author: 'userId2', context: 'messageId2' },
+      ...
+    },
 }
 
 
 The state after dispatching the action would look like this:
 Map({
-  filter: "DEFAULT",
-  notifications: {
-    '1': { id: 1, type: "default", value: "New course available", isRead: false },
-    '2': { id: 2, type: "urgent",  value: "New resume available", isRead: false },
-    '3': { id: 3, type: "urgent",  value: "New data available",   isRead: false },
-  },
-  loading: false,
+    filter: 'DEFAULT',
+    notifications: {
+        users: {
+            '5debd764a7c57c7839d722e9': {
+                id: '5debd764a7c57c7839d722e9',
+                name: {
+                first: 'Poole',
+                last: 'Sanders'
+                },
+                email: 'poole.sanders@holberton.nz',
+                picture: 'http://placehold.it/32x32',
+                age: 25
+            },
+            ...
+        },
+        messages: {
+            '2d8e40be-1c78-4de0-afc9-fcc147afd4d2': {
+                guid: '2d8e40be-1c78-4de0-afc9-fcc147afd4d2',
+                isRead: true,
+                type: 'urgent',
+                value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
+            },
+            ...
+        },
+        notifications: {
+            '5debd76480edafc8af244228': {
+                id: '5debd76480edafc8af244228',
+                author: '5debd764a7c57c7839d722e9',
+                context: '2d8e40be-1c78-4de0-afc9-fcc147afd4d2',
+                isRead: false
+            },
+            ...
+        }
+    },
+    loading: false
 })
 
 

@@ -5,6 +5,8 @@ import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
+import { fetchNotifications } from '../actions/notificationActionCreators';
+import { connect } from "react-redux";
 
 
 const buttonStyle = {
@@ -28,8 +30,12 @@ class Notifications extends PureComponent {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchNotifications();
+    }
+
     render() {
-        const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead } = this.props;
+        const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead, fetchNotifications } = this.props;
 
         return (
             <div className={css(styles.notificationsContainer)}>
@@ -46,11 +52,11 @@ class Notifications extends PureComponent {
                         {listNotifications.length > 0 && <p className={css(styles.p)}>Here is the list of notifications</p>}
 
                         <ul className={css(styles.ul)}>
-                            { listNotifications.length > 0 ? (
-                                listNotifications.map((notification) => (
+                            { listNotifications ? (
+                                Object.values(listNotifications).map((notification) => (
                                     <NotificationItem
-                                        id={ notification.id }
-                                        key={ notification.id }
+                                        id={ notification.guid }
+                                        key={ notification.guid }
                                         type={ notification.type }
                                         value={ notification.value }
                                         html={ notification.html }
@@ -77,7 +83,7 @@ class Notifications extends PureComponent {
 
 Notifications.propTypes = {
     displayDrawer: PropTypes.bool,
-    listNotifications: PropTypes.arrayOf(NotificationItemShape),
+    listNotifications: PropTypes.object,
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
     markNotificationAsRead: PropTypes.func,
@@ -85,7 +91,7 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
     displayDrawer: false,
-    listNotifications: [],
+    listNotifications: {},
     handleDisplayDrawer: () => {},
     handleHideDrawer: () => {},
     markNotificationAsRead: () => {},
@@ -162,6 +168,7 @@ const styles = StyleSheet.create({
         width: '25rem',
         padding: '1rem',
         boxSizing: 'border-box',
+        backgroundColor: 'white',
         '@media (max-width: 900px)': {
             position: 'fixed',
             width: '100%',
@@ -191,4 +198,12 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Notifications;
+const mapStateToProps = (state) => ({
+    listNotifications: state.notifications.getIn(['notifications', 'messages']),
+});
+
+const mapDispatchToProps = {
+    fetchNotifications,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

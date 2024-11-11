@@ -57,7 +57,6 @@ export class App extends Component {
     return (
       <Fragment>
         <Notifications 
-          listNotifications={ this.state.listNotifications }
           displayDrawer={displayDrawer}
           handleDisplayDrawer={displayNotificationDrawer}
           handleHideDrawer={hideNotificationDrawer}
