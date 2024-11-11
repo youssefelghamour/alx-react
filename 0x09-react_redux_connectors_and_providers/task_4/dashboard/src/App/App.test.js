@@ -74,7 +74,7 @@ describe('<App isLoggedIn={ true } />', () => {
 
 describe('mapStateToProps', () => {
     it('returns the right object', () => {
-        let state = fromJS({ isUserLoggedIn: true, isNotificationDrawerVisible: true });
+        let state = { ui: fromJS({ isUserLoggedIn: true, isNotificationDrawerVisible: true }) };
         expect(mapStateToProps(state)).toEqual({ isLoggedIn: true, displayDrawer: true });
     });
 });

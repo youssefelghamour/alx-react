@@ -3,12 +3,12 @@ import { Map } from 'immutable';
 import { normalizedData, notificationsNormalizer } from "../schema/notifications";
 
 
-const notificationInitialState = Map({
+export const initialStateNotification = Map({
     filter: "DEFAULT",
     notifications: [],
 });
 
-export const notificationReducer = (state = notificationInitialState, action) => {
+export const notificationReducer = (state = initialStateNotification, action) => {
     switch (action.type) {
         case FETCH_NOTIFICATIONS_SUCCESS:
             const notificationsNormalizedData = notificationsNormalizer(action.data).notifications;
