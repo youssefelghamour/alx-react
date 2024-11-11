@@ -9,8 +9,6 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import { StyleSheet, css } from 'aphrodite';
-import AppContext, { logOut, user } from './AppContext';
-import { UiInitialState } from '../reducers/uiReducer';
 import { connect } from 'react-redux';
 import { displayNotificationDrawer, hideNotificationDrawer, login, loginRequest, logout } from '../actions/uiActionCreators';
 
@@ -146,8 +144,8 @@ const styles = StyleSheet.create({
 });
 
 export const mapStateToProps = (state) => ({
-  isLoggedIn: state.get('isUserLoggedIn'),
-  displayDrawer: state.get('isNotificationDrawerVisible'),
+  isLoggedIn: state.ui.get('isUserLoggedIn'),
+  displayDrawer: state.ui.get('isNotificationDrawerVisible'),
 });
 
 export const mapDispatchToProps = {

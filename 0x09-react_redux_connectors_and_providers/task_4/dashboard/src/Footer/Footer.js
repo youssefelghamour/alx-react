@@ -16,7 +16,7 @@ export function Footer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.get('user'),
+  user: state.ui.get('user'),
 });
 
 export default connect(mapStateToProps)(Footer);
