@@ -1,9 +1,7 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import closeIcon from '../assets/close-icon.png';
-import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
-import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
 import { fetchNotifications } from '../actions/notificationActionCreators';
 import { connect } from "react-redux";
@@ -87,6 +85,7 @@ Notifications.propTypes = {
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
     markNotificationAsRead: PropTypes.func,
+    fetchNotifications: PropTypes.func,
 };
 
 Notifications.defaultProps = {
@@ -95,6 +94,7 @@ Notifications.defaultProps = {
     handleDisplayDrawer: () => {},
     handleHideDrawer: () => {},
     markNotificationAsRead: () => {},
+    fetchNotifications: () => {},
 };
 
 const opacityKeyframes = {

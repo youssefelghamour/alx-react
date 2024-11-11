@@ -17,18 +17,7 @@ export class App extends Component {
 
   constructor(props) {
     super(props);
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
-
-    this.state = {
-      listNotifications: listNotifications, // Defined below
-    };
-    
-  }
-
-
-  markNotificationAsRead(id) {
-    // Removes the nofitication with the id from the listNotifications in state
-    this.setState({ listNotifications: this.state.listNotifications.filter(notification => notification.id !== id)});
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentDidMount() {
@@ -60,7 +49,6 @@ export class App extends Component {
           displayDrawer={displayDrawer}
           handleDisplayDrawer={displayNotificationDrawer}
           handleHideDrawer={hideNotificationDrawer}
-          markNotificationAsRead={this.markNotificationAsRead}
         />
         
         <div className="App">
@@ -114,12 +102,6 @@ const listCourses = [
   { id: 1, name: "ES6",     credit: 60 },
   { id: 2, name: "Webpack", credit: 20 },
   { id: 3, name: "React",   credit: 40 }
-];
-
-const listNotifications = [
-  { id: 1, type: "default", value: "New course available"             },
-  { id: 2, type: "urgent",  value: "New resume available"             },
-  { id: 3, type: "urgent",  html: { __html: getLatestNotification() } }
 ];
 
 const styles = StyleSheet.create({
