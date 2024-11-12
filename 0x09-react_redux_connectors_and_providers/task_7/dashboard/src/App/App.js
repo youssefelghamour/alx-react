@@ -57,7 +57,7 @@ export class App extends Component {
           <div className={css(styles.body)} >
             { isLoggedIn ? (
                 <BodySectionWithMarginBottom title="Course list">
-                  <CourseList listCourses={ listCourses } />
+                  <CourseList />
                 </BodySectionWithMarginBottom>
               ) : ( 
                 <BodySectionWithMarginBottom title="Log in to continue" >

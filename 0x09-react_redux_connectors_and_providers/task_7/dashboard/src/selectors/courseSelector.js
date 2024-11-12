@@ -13,6 +13,8 @@ export const getCourses = (state) => {
             { id: 1, name: 'Course 1' },
             { id: 2, name: 'Course 2' }
         ]
+    
+        IndexedSeq behaves like a list but is actually an object
     */
     return state.courses.valueSeq();
 }

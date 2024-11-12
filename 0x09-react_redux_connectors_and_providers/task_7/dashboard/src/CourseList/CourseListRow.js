@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 
     th: {
         borderBottom: '2px solid lightgrey',
-        padding: '5px 0',
+        padding: '5px 0 5px 6px',
     },
 
     rowChecked: {
