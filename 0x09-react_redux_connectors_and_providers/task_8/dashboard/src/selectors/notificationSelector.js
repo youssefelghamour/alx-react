@@ -50,11 +50,13 @@ export const getUnreadNotificationsByType = createSelector(
             const urgentUnreadNotifications = {};
 
             for (let key in unreadNotifications) {
+                // If the notification is urgent, add it to urgentUnreadNotifications
                 if (unreadNotifications[key].type === 'urgent') {
                     urgentUnreadNotifications[key] = unreadNotifications[key];
                 }
             }
 
+            // Return only unread urgent notifications
             return urgentUnreadNotifications;
         }
     }
