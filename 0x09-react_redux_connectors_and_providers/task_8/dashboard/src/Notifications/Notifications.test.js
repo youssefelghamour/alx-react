@@ -128,4 +128,20 @@ describe('<Notifications />', () => {
         // Check if fetchNotifications was called after mounting
         expect(fetchNotifications).toHaveBeenCalled();
     });
+
+    it('should call setNotificationFilter with URGENT when first button is clicked', () => {
+        const setNotificationFilter = jest.fn();
+        const { getText } = render(<Notifications setNotificationFilter={setNotificationFilter} />);
+    
+        fireEvent.click(getText('!!'));
+        expect(setNotificationFilter).toHaveBeenCalledWith('URGENT');
+    });
+    
+    it('should call setNotificationFilter with DEFAULT when second button is clicked', () => {
+        const setNotificationFilter = jest.fn();
+        const { getText } = render(<Notifications setNotificationFilter={setNotificationFilter} />);
+    
+        fireEvent.click(getText('💠'));
+        expect(setNotificationFilter).toHaveBeenCalledWith('DEFAULT');
+    });
 });
