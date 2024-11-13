@@ -170,6 +170,8 @@ const styles = StyleSheet.create({
         padding: '1rem',
         boxSizing: 'border-box',
         backgroundColor: 'white',
+        boxShadow: '0 0 11px #cccccc',
+        borderRadius: '10px',
         '@media (max-width: 900px)': {
             position: 'fixed',
             width: '100%',

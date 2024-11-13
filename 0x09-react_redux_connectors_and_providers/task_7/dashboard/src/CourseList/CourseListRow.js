@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
 
-export default function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
-    const [checked, setChecked] = useState(false);
-
+export default function CourseListRow({ id, isHeader, textFirstCell, textSecondCell, isChecked, onChangeRow }) {
     const rowStyle = {backgroundColor: '#f5f5f5ab'};
     const headerStyle = {backgroundColor: '#deb5b545'};
     const style = isHeader ? headerStyle : rowStyle;
-
-    const handleCheck = () => {
-        setChecked(!checked);
-    }
 
     if (isHeader) {
         if (textSecondCell === null) {
@@ -31,14 +25,15 @@ export default function CourseListRow({ isHeader, textFirstCell, textSecondCell 
         }
     } else {
         return (
-            <tr style={style} className={checked ? css(styles.rowChecked) : ''}>
-                <td><input type='checkbox' onClick={handleCheck}/>{ textFirstCell }</td>
+            <tr style={style} className={isChecked ? css(styles.rowChecked) : ''}>
+                <td><input type='checkbox' onClick={() => onChangeRow(id, !isChecked)}/>{ textFirstCell }</td>
                 <td>{ textSecondCell }</td>
             </tr>
         );
     }
 }
 
+/*
 CourseListRow.propTypes = {
     isHeader: PropTypes.bool,
     textFirstCell: PropTypes.string.isRequired,
@@ -48,7 +43,7 @@ CourseListRow.propTypes = {
 CourseListRow.defaultProps = {
     isHeader: false,
     textSecondCell: null,
-};
+};*/
 
 const styles = StyleSheet.create({
     firstTh: {

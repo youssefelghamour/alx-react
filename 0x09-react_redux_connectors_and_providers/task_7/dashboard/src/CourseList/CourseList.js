@@ -10,11 +10,19 @@ import { connect } from "react-redux";
 class CourseList extends Component {
     constructor(props) {
         super(props);
+        this.onChangeRow = this.onChangeRow.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchCourses();
-        console.log(this.props.listCourses);
+    }
+
+    onChangeRow(id, checked) {
+        if (checked) {
+            this.props.selectCourse(id);
+        } else {
+            this.props.unSelectCourse(id);
+        }
     }
 
     render () {
@@ -33,9 +41,12 @@ class CourseList extends Component {
                             listCourses.map((course) => (
                                 <CourseListRow
                                     key={ course.id }
+                                    id={course.id}
                                     textFirstCell={ course.name }
                                     textSecondCell={ course.credit }
                                     isHeader={ false }
+                                    isChecked={ course.isSelected }
+                                    onChangeRow={ this.onChangeRow }
                                 />
                             ))
                         ) : (
