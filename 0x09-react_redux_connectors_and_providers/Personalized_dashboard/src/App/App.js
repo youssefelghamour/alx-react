@@ -57,93 +57,9 @@ export class App extends Component {
 
           <div className={css(styles.body)} >
             { isLoggedIn ? (
-              <Fragment >
-                  <BodySectionWithMarginBottom title="Course list">
-                    <CourseList />
-                  </BodySectionWithMarginBottom>
-
-                  <BodySection title="News from the School">
-                    <div style={{display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '10px', margin: '0 100px 0 60px'}}>
-
-                      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr',}}>
-
-                        <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
-                          <img src='news1.jpg' style={{width: '100%', height: '150px', objectFit: 'cover'}}></img>
-                          <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Sports</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Annual Sports Day Highlights</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>14 November 2024</p>
-                          </div>
-                        </div>
-
-                        <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
-                          <img src='news2.jpg' style={{width: '100%', height: '150px', objectFit: 'cover'}}></img>
-                          <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Science Fair 2024</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>12 Devember 2024</p>
-                          </div>
-                        </div>
-
-                        <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
-                          <img src='news3.jpg' style={{width: '100%', height: '150px', objectFit: 'cover'}}></img>
-                          <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>New Principal Appointment</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>16 November 2024</p>
-                          </div>
-                        </div>
-
-                        <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
-                          <img src='news4.jpg' style={{width: '100%', height: '150px', objectFit: 'cover'}}></img>
-                          <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>School Safety Policy Update</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>18 November 2024</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <aside>
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '1.5rem', fontWeight: 'bold', color: '#e0354b', marginBottom: '15px'}}>School Highlights</p>
-                          </div>
-
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>New Virtual Classroom Guidelines</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>15 November 2024</p>
-                          </div>
-
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Platform Update</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Interactive Quizzes</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>11 November 2024</p>
-                          </div>
-
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Learning</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Update on Peer Learning days</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>10 November 2024</p>
-                          </div>
-
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Online Exam Protocol Update</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>9 November 2024</p>
-                          </div>
-
-                          <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                            <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
-                            <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Graduation Ceremony</p>
-                            <p style={{margin: '5px 0', fontSize: '0.7rem'}}>8 November 2024</p>
-                          </div>
-                      </aside>
-
-                    </div>
-
-                  </BodySection>
-                </Fragment>
+                <BodySectionWithMarginBottom title="Course list">
+                  <CourseList />
+                </BodySectionWithMarginBottom>
               ) : ( 
                 <BodySectionWithMarginBottom title="Log in to continue" >
                   <Login logIn={loginRequest}/>
@@ -151,7 +67,87 @@ export class App extends Component {
               )
             }
 
-            
+            <BodySection title="News from the School">
+              <div style={{display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '10px', margin: '0 100px 0 60px'}}>
+
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr',}}>
+
+                  <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer', alignSelf: 'stretch'}}>
+                    <img src='news1.jpg' style={{width: '100%', height: '150px', objectFit: 'cover', flexGrow: 1}}></img>
+                    <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Sports</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Annual Sports Day Highlights</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>14 November 2024</p>
+                    </div>
+                  </div>
+
+                  <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer', alignSelf: 'stretch'}}>
+                    <img src='news2.jpg' style={{width: '100%', height: '150px', objectFit: 'cover', flexGrow: 1}}></img>
+                    <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Science Fair 2024</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>12 Devember 2024</p>
+                    </div>
+                  </div>
+
+                  <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer', alignSelf: 'stretch'}}>
+                    <img src='news3.jpg' style={{width: '100%', height: '150px', objectFit: 'cover', flexGrow: 1}}></img>
+                    <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>New Principal Appointment</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>16 November 2024</p>
+                    </div>
+                  </div>
+
+                  <div style={{padding: '10px', display: 'flex', flexDirection: 'column', cursor: 'pointer', alignSelf: 'stretch'}}>
+                    <img src='news4.jpg' style={{width: '100%', height: '150px', objectFit: 'cover', flexGrow: 1}}></img>
+                    <div style={{padding: '8px 15px', backgroundColor: '#f2b1b282'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>School Safety Policy Update</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>18 November 2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <aside>
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '1.5rem', fontWeight: 'bold', color: '#e0354b', marginBottom: '15px'}}>School Highlights</p>
+                    </div>
+
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>New Virtual Classroom Guidelines</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>15 November 2024</p>
+                    </div>
+
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Platform Update</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Interactive Quizzes</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>11 November 2024</p>
+                    </div>
+
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Learning</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Update on Peer Learning days</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>10 November 2024</p>
+                    </div>
+
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Online Exam Protocol Update</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>9 November 2024</p>
+                    </div>
+
+                    <div style={{borderBottom: '0.8px solid lightgrey'}}>
+                      <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
+                      <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Graduation Ceremony</p>
+                      <p style={{margin: '5px 0', fontSize: '0.7rem'}}>8 November 2024</p>
+                    </div>
+                </aside>
+
+              </div>
+
+            </BodySection>
           </div>
 
           <div className={css(styles.footer)} >

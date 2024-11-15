@@ -3,6 +3,7 @@ import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
+import {FaBell} from 'react-icons/fa';
 
 
 const buttonStyle = {
@@ -32,7 +33,7 @@ class Notifications extends PureComponent {
         return (
             <div className={css(styles.notificationsContainer)}>
                 <div className={ !displayDrawer ? css(styles.menuItem) : css(styles.hide)} onClick={handleDisplayDrawer}>
-                    Your notifications
+                    <FaBell style={{color: '#e66562'}}/> Notifications
                 </div>
 
                 { displayDrawer ? 

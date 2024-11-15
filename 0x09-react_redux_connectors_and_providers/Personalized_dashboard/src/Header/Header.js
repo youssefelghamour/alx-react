@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     boxSizing: 'border-box',
     paddingRight: '22px',
+    fontFamily: 'Poppins, sans-serif',
   },
 
   AppHeader: {
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
     color: '#e0354b',
     borderBottom: '3px solid',
     width: '100%',
+    fontFamily: 'Poppins, sans-serif',
   },
 
   img: {
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
   },
 
   h1: {
-    fontFamily: 'sans-serif',
     fontSize: '1.8rem',
   },
 
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     marginLeft: '30px',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'end',
   },
 
   logOutButton: {
