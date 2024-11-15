@@ -18,6 +18,23 @@ export class Header extends Component {
       <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}>
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
           <h1 className={css(styles.h1)} >School dashboard</h1>
+          {/*
+          <div style={{display: 'flex', alignItems: 'center', margin: '18px 35px 0px 18px', position: 'absolute', top: '3px', left: '50%', transform: 'translateX(-50%)',}}>
+              <div>
+                  Home
+              </div>
+
+              <div style={{margin: '0 10px',}}>
+                  Courses
+              </div>
+
+              <div>
+                  News
+              </div>
+
+              
+          </div>
+          */}
           {/* user.email to confirm the user is logged in and has an email
 
               The whole user object is {} when the user isn't logged in,

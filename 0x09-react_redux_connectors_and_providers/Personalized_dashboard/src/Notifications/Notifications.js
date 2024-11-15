@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'flex-end',
         fontFamily: 'Poppins, sans-serif',
+        margin: '18px 10px 0 0',
         '@media (max-width: 900px)': {
             right: 0,
         }
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     menuItem: {
         marginBottom: '8px',
         float: 'right',
-        backgroundColor: '#fff8f8',
+        /*backgroundColor: '#fff8f8',*/
         cursor: 'pointer',
 
         ':hover': {
