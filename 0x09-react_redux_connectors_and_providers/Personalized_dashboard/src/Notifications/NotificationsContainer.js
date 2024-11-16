@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchNotifications, markAsAread, setNotificationFilter } from '../actions/notificationActionCreators';
 import { connect } from "react-redux";
-import { getUnreadNotificationsByType } from '../selectors/notificationSelector';
+import { filterTypeSelected, getUnreadNotificationsByType } from '../selectors/notificationSelector';
 import Notifications from "./Notifications";
 import PropTypes from 'prop-types';
 
@@ -30,6 +30,7 @@ Notifications.propTypes = {
     handleHideDrawer: PropTypes.func,
     markNotificationAsRead: PropTypes.func,
     fetchNotifications: PropTypes.func,
+    filter: PropTypes.string,
 };
 
 Notifications.defaultProps = {
@@ -39,11 +40,13 @@ Notifications.defaultProps = {
     handleHideDrawer: () => {},
     markNotificationAsRead: () => {},
     fetchNotifications: () => {},
+    filter: 'DEFAULT',
 };
 
 
 const mapStateToProps = (state) => ({
     listNotifications: getUnreadNotificationsByType(state),
+    filter: filterTypeSelected(state),
 });
 
 const mapDispatchToProps = {

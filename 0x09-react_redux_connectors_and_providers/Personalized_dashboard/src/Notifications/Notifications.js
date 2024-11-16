@@ -28,7 +28,7 @@ class Notifications extends PureComponent {
     }
 
     render() {
-        const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead, setNotificationFilter, fetchNotifications } = this.props;
+        const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead, setNotificationFilter, fetchNotifications, filter } = this.props;
 
         return (
             <div className={css(styles.notificationsContainer)}>
@@ -46,9 +46,8 @@ class Notifications extends PureComponent {
                             <>
                                 <p className={css(styles.p)}>Notifications</p>
                                 <div className={css(styles.filterContainer)}>
-                                    Filter by:
-                                    <button className={css(styles.filterButton, styles.filterUrgent)} onClick={() => setNotificationFilter('URGENT')}>!!</button>
-                                    <button className={css(styles.filterButton, styles.filterDefault)} onClick={() => setNotificationFilter('DEFAULT')}>💠</button>
+                                    <button className={css(filter === 'DEFAULT' ? styles.filterButtonSelected : styles.filterButton)} onClick={() => setNotificationFilter('DEFAULT')}>All</button>
+                                    <button className={css(filter === 'URGENT' ? styles.filterButtonSelected : styles.filterButton)} onClick={() => setNotificationFilter('URGENT')}>Urgent</button>
                                 </div>
                             </>
                         }
@@ -229,14 +228,32 @@ const styles = StyleSheet.create({
         width: 'fit-content',
         textAlign: 'center',
         verticalAlign: 'middle',
-        backgroundColor: 'white',
-        boxShadow: 'rgba(0, 0, 0, 0.1) 0.5px 1px 2px',
+        backgroundColor: '#d7d7d74d',
         cursor: 'pointer !important',
-        borderRadius: '5px !important',
-        border: '0.5px solid rgba(128, 128, 128, 0.506)',
-        
+        borderRadius: '8px !important',
+        padding: '5px 10px',
+        marginRight: '5px',
+        border: 'none',
+
+        ':hover': {
+            backgroundColor: '#0000001a',
+        },
     },
 
+    filterButtonSelected: {
+        width: 'fit-content',
+        textAlign: 'center',
+        verticalAlign: 'middle',
+        backgroundColor: 'black',
+        cursor: 'pointer !important',
+        borderRadius: '8px !important',
+        padding: '5px 10px',
+        marginRight: '5px',
+        border: 'none',
+        color: 'white',
+    },
+
+    /*
     filterUrgent: {
         padding: '3px 7px',
         marginRight: '5px',
@@ -254,6 +271,7 @@ const styles = StyleSheet.create({
             backgroundColor: 'rgba(219, 219, 219, 0.477)',
         },
     },
+    */
 });
 
 export default Notifications;

@@ -1,3 +1,4 @@
+import { css, StyleSheet } from "aphrodite";
 import React, { Component } from "react";
 
 
@@ -9,48 +10,77 @@ class Updates extends Component {
     render() {
         return (
             <aside>
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '1.5rem', fontWeight: 'bold', color: '#e0354b', marginBottom: '15px'}}>School Updates</p>
+                <h3 className={css(styles.sectionTitle)}>School Updates</h3>
+
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Administration</p>
+                    <p className={css(styles.updateTitle)}>New Virtual Classroom Guidelines</p>
+                    <p className={css(styles.updateDate)}>15 November 2024</p>
                 </div>
 
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>New Virtual Classroom Guidelines</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>15 November 2024</p>
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Platform Update</p>
+                    <p className={css(styles.updateTitle)}>Interactive Quizzes</p>
+                    <p className={css(styles.updateDate)}>11 November 2024</p>
                 </div>
 
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Platform Update</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Interactive Quizzes</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>11 November 2024</p>
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Learning</p>
+                    <p className={css(styles.updateTitle)}>Update on Peer Learning days</p>
+                    <p className={css(styles.updateDate)}>10 November 2024</p>
                 </div>
 
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Learning</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Update on Peer Learning days</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>10 November 2024</p>
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Administration</p>
+                    <p className={css(styles.updateTitle)}>Online Exam Protocol Update</p>
+                    <p className={css(styles.updateDate)}>9 November 2024</p>
                 </div>
 
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Administration</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Online Exam Protocol Update</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>9 November 2024</p>
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Events</p>
+                    <p className={css(styles.updateTitle)}>Graduation Ceremony</p>
+                    <p className={css(styles.updateDate)}>8 November 2024</p>
                 </div>
 
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>Graduation Ceremony</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>8 November 2024</p>
-                </div>
-
-                <div style={{borderBottom: '0.8px solid lightgrey'}}>
-                    <p style={{margin: '5px 0', fontSize: '0.8rem'}}>Events</p>
-                    <p style={{margin: '5px 0', fontSize: '1rem', fontWeight: 'bold',}}>News on the Book Fair</p>
-                    <p style={{margin: '5px 0', fontSize: '0.7rem'}}>8 November 2024</p>
+                <div className={css(styles.updateContainer)}>
+                    <p className={css(styles.updateType)}>Events</p>
+                    <p className={css(styles.updateTitle)}>News on the Book Fair</p>
+                    <p className={css(styles.updateDate)}>8 November 2024</p>
                 </div>
             </aside>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    sectionTitle: {
+        margin: '5px 0',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#e0354b',
+        paddingBottom: '15px',
+        borderBottom: '0.8px solid lightgrey',
+    },
+
+    updateContainer: {
+        borderBottom: '0.8px solid lightgrey',
+    },
+
+    updateType: {
+        margin: '5px 0',
+        fontSize: '0.8rem',
+    },
+
+    updateTitle: {
+        margin: '5px 0',
+        fontSize: '1rem',
+        fontWeight: 'bold',
+    },
+
+    updateDate: {
+        margin: '5px 0',
+        fontSize: '0.7rem',
+    },
+});
 
 export default Updates;
