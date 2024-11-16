@@ -17,24 +17,24 @@ export class Header extends Component {
     return (
       <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}>
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
-          <h1 className={css(styles.h1)} >School dashboard</h1>
-          {/*
-          <div style={{display: 'flex', alignItems: 'center', margin: '18px 35px 0px 18px', position: 'absolute', top: '3px', left: '50%', transform: 'translateX(-50%)',}}>
-              <div>
+          <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1>
+          
+          <div style={{display: 'flex', alignItems: 'center', margin: '18px 0 0 0', position: 'absolute', top: '50px', left: '50%', transform: 'translateX(-50%)',}}>
+              <a href="#" className={css(styles.nav)}>
                   Home
-              </div>
+              </a>
 
-              <div style={{margin: '0 10px',}}>
+              <a href="#body" className={css(styles.nav)} style={{margin: '0 10px',}}>
                   Courses
-              </div>
+              </a>
 
-              <div>
+              <a href="#news" className={css(styles.nav)}>
                   News
-              </div>
+              </a>
 
               
           </div>
-          */}
+          
           {/* user.email to confirm the user is logged in and has an email
 
               The whole user object is {} when the user isn't logged in,
@@ -75,11 +75,17 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    width: '12rem',
+    width: '10rem',
   },
 
   h1: {
     fontSize: '1.8rem',
+    position: 'absolute',
+    top: '3px', left: '50%',
+    transform: 'translateX(-50%)',
+    background: 'linear-gradient(to right, rgb(230, 101, 98), rgb(227, 97, 131))',
+    WebkitBackgroundClip: 'text',
+    color: 'transparent',
   },
 
   logOut: {
@@ -92,6 +98,15 @@ const styles = StyleSheet.create({
   logOutButton: {
     fontWeight: 'bold',
     cursor: 'pointer',
+  },
+
+  nav: {
+    color: 'black',
+    textDecoration: 'none',
+
+    ':hover': {
+      color: 'darkgrey',
+    },
   },
 });
 

@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     newsSectionGrid: {
         display: 'grid',
         gridTemplateColumns: '2fr 1fr',
-        gap: '10px',
-        margin: '0 100px 60px 60px',
+        gap: '20px',
+        marginBottom: '40px',
 
         '@media (max-width: 900px)': {
             gridTemplateColumns: '1fr',

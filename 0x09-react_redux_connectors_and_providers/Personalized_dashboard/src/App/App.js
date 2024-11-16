@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
     margin: '15px',
     fontFamily: 'Poppins, sans-serif',
     minHeight: '62vh',
+    width: '80%',
+    justifySelf: 'center',
   },
 
   footer: {

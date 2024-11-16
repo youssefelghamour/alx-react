@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         cursor: 'pointer',
         alignSelf: 'stretch',
+        transition: 'transform ease',
+
+        ':hover': {
+            transform: 'scale(102%)',
+        },
     },
 
     coverImage: {
