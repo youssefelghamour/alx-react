@@ -64,6 +64,10 @@ const styles = StyleSheet.create({
 
     updateContainer: {
         borderBottom: '0.8px solid lightgrey',
+
+        '@media (max-width: 900px)': {
+            textAlign: 'center',
+        },
     },
 
     updateType: {
