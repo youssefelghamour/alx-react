@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
         float: 'right',
         /*backgroundColor: '#fff8f8',*/
         cursor: 'pointer',
+        zIndex: '1',
 
         ':hover': {
             animationName: [opacityKeyframes, translateKeyframes],

@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 
         '@media (max-width: 900px)': {
             gridTemplateColumns: '1fr',
-            marginRight: '60px',
         },
     },
 });

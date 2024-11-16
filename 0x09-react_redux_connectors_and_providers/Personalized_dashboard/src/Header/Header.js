@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../assets/holberton-logo.jpg';
+import logo from '../assets/header-logo.png';
 import { StyleSheet, css } from 'aphrodite';
-import AppContext from '../App/AppContext';
 import { connect } from 'react-redux';
 import { logout } from '../actions/uiActionCreators';
 
@@ -19,12 +18,12 @@ export class Header extends Component {
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
           <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1>
           
-          <div style={{display: 'flex', alignItems: 'center', margin: '18px 0 0 0', position: 'absolute', top: '50px', left: '50%', transform: 'translateX(-50%)',}}>
+          <div style={{display: 'flex', alignItems: 'center', position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)',}}>
               <a href="#" className={css(styles.nav)}>
                   Home
               </a>
 
-              <a href="#body" className={css(styles.nav)} style={{margin: '0 10px',}}>
+              <a href="#body" className={css(styles.nav)} style={{margin: '0 25px',}}>
                   Courses
               </a>
 
@@ -57,33 +56,52 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     color: '#e0354b',
-    borderBottom: '3px solid',
+    /*borderBottom: '3px solid',*/
     width: '100%',
     justifyContent: 'space-between',
     boxSizing: 'border-box',
     paddingRight: '22px',
     fontFamily: 'Poppins, sans-serif',
+    background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    borderBottomLeftRadius: '20px',
+    borderBottomRightRadius: '20px',
+    boxShadow: '0 8px 16px #0003',
+    position: 'sticky',
+    top: '0',
+    backdropFilter: 'blur(10px)',
   },
 
   AppHeader: {
     display: 'flex',
     alignItems: 'center',
     color: '#e0354b',
-    borderBottom: '3px solid',
+    //borderBottom: '3px solid',
     width: '100%',
     fontFamily: 'Poppins, sans-serif',
+    background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    borderBottomLeftRadius: '20px',
+    borderBottomRightRadius: '20px',
+    boxShadow: '0 8px 16px #0003',
+    position: 'sticky',
+    top: '0',
+    backdropFilter: 'blur(10px)',
   },
 
   img: {
-    width: '10rem',
+    position: 'relative',
+    width: '3rem',
+    left: '9%',
+    padding: '12px',
+    borderRadius: '20px',
   },
 
   h1: {
-    fontSize: '1.8rem',
+    fontSize: '1.5rem',
     position: 'absolute',
-    top: '3px', left: '50%',
+    top: '-10%',
+    left: '50%',
     transform: 'translateX(-50%)',
-    background: 'linear-gradient(to right, rgb(230, 101, 98), rgb(227, 97, 131))',
+    background: 'linear-gradient(to right, #e31c3f, rgb(227, 97, 131))',
     WebkitBackgroundClip: 'text',
     color: 'transparent',
   },
@@ -103,6 +121,7 @@ const styles = StyleSheet.create({
   nav: {
     color: 'black',
     textDecoration: 'none',
+    fontWeight: 'bold',
 
     ':hover': {
       color: 'darkgrey',

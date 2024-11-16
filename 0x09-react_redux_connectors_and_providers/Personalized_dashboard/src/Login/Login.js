@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types';
+import logo from '../assets/logo3.png';
 
 
 class Login extends Component {
@@ -44,6 +45,7 @@ class Login extends Component {
   render () {
     return (
       <React.Fragment>
+        <div style={{display: 'flex', justifyContent: 'center', overflow: 'hidden',}}>
           <div className={css(styles.loginContainer)}>
               <p>Login to access the full dashboard</p>
               
@@ -57,6 +59,8 @@ class Login extends Component {
                 <input className={css(styles.button)} type='submit'   value='Sign In'    disabled={!this.state.enableSubmit}/>
               </form>
           </div>
+          <img src={logo} style={{ flex: '1', height: '19.6rem', objectFit: 'cover',}}/>
+        </div>
       </React.Fragment>
     );
   }
@@ -72,12 +76,17 @@ Login.defaultProps = {
 
 const styles = StyleSheet.create({
   loginContainer: {
-    margin: '3rem 2rem',
+    //margin: '3rem 2rem',
     fontSize: '1rem',
     fontFamily: 'Poppins, sans-serif',
     fontWeight: '400',
     textAlign: 'center',
     textAlign: '-webkit-center',
+    //
+    width: '50%',
+    height: '100%',
+    flex: '1',
+    backgroundColor: 'white',
     '@media (max-width: 900px)': {
       margin: 0,
     },
@@ -131,16 +140,27 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '35%',
-    boxShadow: '2px 2px 9px #0000001f',
+    //boxShadow: '2px 2px 9px #0000001f',
     padding: '25px',
-    borderRadius: '33px',
-    marginTop: '30px',
+    //borderRadius: '33px',
+    //marginTop: '30px',
     backgroundColor: 'white',
+    //
+    height: '100%',
     '@media (max-width: 900px)': {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
       margin: 0,
+      width: '40%',
+    },
+
+    '@media (max-width: 600px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      margin: 0,
+      width: '65%',
     },
   }
 });

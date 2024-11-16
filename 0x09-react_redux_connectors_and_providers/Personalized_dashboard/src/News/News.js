@@ -41,6 +41,10 @@ const styles = StyleSheet.create({
     newsContainer: {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
+
+        '@media (max-width: 600px)': {
+            gridTemplateColumns: '1fr',
+        },
     },
 
     newsItem: {
@@ -66,6 +70,8 @@ const styles = StyleSheet.create({
     infoContainer: {
         padding: '8px 15px',
         backgroundColor: '#f2b1b282',
+        background: 'linear-gradient(149deg, #e1003c 37%, #f100a5)',
+        color: 'white',
     },
 
     newsType: {
