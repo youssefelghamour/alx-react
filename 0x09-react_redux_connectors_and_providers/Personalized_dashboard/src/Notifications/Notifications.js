@@ -34,7 +34,11 @@ class Notifications extends PureComponent {
             <div className={css(styles.notificationsContainer)}>
                 <div className={ !displayDrawer ? css(styles.menuItem) : css(styles.hide)} onClick={handleDisplayDrawer}>
                     <FaBell className={css(styles.bellIcon)}/>
+                    { Object.keys(listNotifications).length > 0 ? (
+                        <p className={css(styles.notificationsCounter)}>{Object.keys(listNotifications).length}</p>
+                    ) : (null)}
                 </div>
+                
 
                 { displayDrawer ? 
                     (<div className={css(styles.notifications)}>
@@ -112,19 +116,16 @@ const opacityKeyframes = {
 
 const translateKeyframes = {
     '0%': {
-        transform: 'translateY(0)',
+        transform: 'rotate(0deg)',
     },
-
     '25%': {
-        transform: 'translateY(-5px)',
+        transform: 'rotate(-10deg)',
     },
-
     '50%': {
-        transform: 'translateY(5px)',
+        transform: 'rotate(10deg)',
     },
-
     '100%': {
-        transform: 'translateY(0)',
+        transform: 'rotate(0deg)',
     },
 };
 
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
         ':hover': {
             animationName: [opacityKeyframes, translateKeyframes],
             animationDuration: '1s, 0.5s',
-            animationIterationCount: '3',
+            animationIterationCount: '2',
         },
 
         '@media (max-width: 900px)': {
@@ -172,6 +173,16 @@ const styles = StyleSheet.create({
         color: 'white',
         width: '25px',
         height: '25px',
+    },
+
+    notificationsCounter: {
+        position: 'absolute',
+        bottom: '8%',
+        right: '3%',
+        zIndex: '1',
+        color: 'white',
+        textShadow: '-1px -1px 0 #e1003c, 1px -1px 0 #e1003c, -1px 1px 0 #e1003c, 1px 1px 0 #e1003c',
+        width: '14px',
     },
 
     hide: {
