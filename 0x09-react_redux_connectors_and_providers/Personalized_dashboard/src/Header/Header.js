@@ -44,7 +44,7 @@ export class Header extends Component {
                 Welcome {user.email}
                 <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
                 </p>
-            ) : (null)
+            ) : (<button className={css(styles.loginButton)}>Login</button>)
           }
       </div>
     );
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     position: 'sticky',
     top: '0',
     backdropFilter: 'blur(10px)',
+    zIndex: '1',
   },
 
   img: {
@@ -125,6 +126,22 @@ const styles = StyleSheet.create({
 
     ':hover': {
       color: 'darkgrey',
+    },
+  },
+
+  loginButton: {
+    position: 'absolute',
+    right: '9%',
+    padding: '8px 16px',
+    border: 'none',
+    color: '#ffffff',
+    fontWeight: 'bold',
+    borderRadius: '25px',
+    backgroundColor: '#000000',
+    cursor: 'pointer',
+
+    ':hover': {
+      backgroundColor: 'grey',
     },
   },
 });

@@ -33,7 +33,7 @@ class Notifications extends PureComponent {
         return (
             <div className={css(styles.notificationsContainer)}>
                 <div className={ !displayDrawer ? css(styles.menuItem) : css(styles.hide)} onClick={handleDisplayDrawer}>
-                    <FaBell style={{color: '#e66562'}}/> Notifications
+                    <FaBell className={css(styles.bellIcon)}/>
                 </div>
 
                 { displayDrawer ? 
@@ -133,21 +133,28 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
-        right: '12px',
+        right: '2%',
         flexWrap: 'wrap',
         alignItems: 'flex-end',
         fontFamily: 'Poppins, sans-serif',
         margin: '18px 10px 0 0',
+        top: '88%',
         '@media (max-width: 900px)': {
             right: 0,
         }
     },
     
     menuItem: {
-        marginBottom: '8px',
+        //marginBottom: '8px',
         float: 'right',
         /*backgroundColor: '#fff8f8',*/
         cursor: 'pointer',
+        zIndex: '1',
+        borderRadius: '50%',
+        boxShadow: '2px 3px 7px #a7a6a6cc',
+        padding: '10px 11px 4px',
+        position: 'fixed',
+        backgroundColor: '#e1003c',
         zIndex: '1',
 
         ':hover': {
@@ -161,6 +168,12 @@ const styles = StyleSheet.create({
         }
     },
 
+    bellIcon: {
+        color: 'white',
+        width: '25px',
+        height: '25px',
+    },
+
     hide: {
         display: 'none',
     },
@@ -170,7 +183,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: '1rem',
         /*border: '1.6px dashed #e0354b',*/
-        position: 'relative',
+        position: 'fixed',
         width: '25rem',
         padding: '1rem',
         boxSizing: 'border-box',
@@ -182,6 +195,9 @@ const styles = StyleSheet.create({
         background: 'white',
         fontFamily: 'Poppins, sans-serif',
         zIndex: '1',
+        bottom: '2%',
+        right: '2%',
+        
         '@media (max-width: 900px)': {
             position: 'fixed',
             width: '100%',
