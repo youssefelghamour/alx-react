@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box',
     paddingRight: '22px',
     fontFamily: 'Poppins, sans-serif',
-    background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    //background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    backgroundColor: '#ffffffb3',
     borderBottomLeftRadius: '20px',
     borderBottomRightRadius: '20px',
     boxShadow: '0 8px 16px #0003',
@@ -78,7 +79,8 @@ const styles = StyleSheet.create({
     //borderBottom: '3px solid',
     width: '100%',
     fontFamily: 'Poppins, sans-serif',
-    background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    //background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
+    backgroundColor: '#ffffffb3',
     borderBottomLeftRadius: '20px',
     borderBottomRightRadius: '20px',
     boxShadow: '0 8px 16px #0003',
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   img: {
     position: 'relative',
     width: '3rem',
-    left: '9%',
+    left: '12%',
     padding: '12px',
     borderRadius: '20px',
   },
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
 
   loginButton: {
     position: 'absolute',
-    right: '9%',
+    right: '12%',
     padding: '8px 16px',
     border: 'none',
     color: '#ffffff',

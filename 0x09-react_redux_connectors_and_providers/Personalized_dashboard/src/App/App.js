@@ -60,17 +60,17 @@ export class App extends Component {
 
           <div className={css(styles.body)} >
             { isLoggedIn ? (
-                <BodySectionWithMarginBottom title="Course list">
+                <BodySectionWithMarginBottom title="Learn, grow, succeed." subtitle="Course list">
                   <CourseList />
                 </BodySectionWithMarginBottom>
               ) : ( 
-                <BodySectionWithMarginBottom title="Log in to continue" >
+                <BodySectionWithMarginBottom title="Learn, grow, succeed." message="Unlock your potential – log in to learn!" >
                   <Login logIn={loginRequest}/>
                 </BodySectionWithMarginBottom>
               )
             }
 
-            <BodySection title="News from the School">
+            <BodySection subtitle="News from the School">
               <NewsSectionGrid>
                 <News />
                 <Updates />
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     margin: '15px',
     fontFamily: 'Poppins, sans-serif',
     minHeight: '62vh',
-    width: '80%',
+    width: '75%',
     justifySelf: 'center',
   },
 

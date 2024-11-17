@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types';
-import logo from '../assets/logo3.png';
+import hero from '../assets/hero-bg.jpg';
 
 
 class Login extends Component {
@@ -45,21 +45,18 @@ class Login extends Component {
   render () {
     return (
       <React.Fragment>
-        <div style={{display: 'flex', justifyContent: 'center', overflow: 'hidden',}}>
+        <div className={css(styles.loginSection)}>
           <div className={css(styles.loginContainer)}>
-              <p>Login to access the full dashboard</p>
-              
               <form className={css(styles.formContainer)} onSubmit={this.handleLoginSubmit}>
-                <label className={css(styles.label)}  htmlFor='email'>Email</label>
+                <p className={css(styles.formTitle)}>Login</p>
+
                 <input className={css(styles.input)}  type='email'    id='email'    name="email"    value={this.state.email}    onChange={this.handleChangeEmail}    placeholder="Email"/>
 
-                <label className={css(styles.label)}  htmlFor='password'>Password</label>
                 <input className={css(styles.input)}  type='password' id='password' name="password" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password"/>
 
                 <input className={css(styles.button)} type='submit'   value='Sign In'    disabled={!this.state.enableSubmit}/>
               </form>
           </div>
-          <img src={logo} style={{ flex: '1', height: '19.6rem', objectFit: 'cover',}}/>
         </div>
       </React.Fragment>
     );
@@ -75,6 +72,19 @@ Login.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+  loginSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    backgroundImage: `linear-gradient(#000000bf, #000000bf), url(${hero})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    color: 'white',
+    borderRadius: '25px',
+    height: '400px',
+  },
+
   loginContainer: {
     //margin: '3rem 2rem',
     fontSize: '1rem',
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
     width: '50%',
     height: '100%',
     flex: '1',
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     '@media (max-width: 900px)': {
       margin: 0,
     },
@@ -103,8 +113,11 @@ const styles = StyleSheet.create({
     padding: '3px 15px',
     borderRadius: '20px',
     height: '30px',
-    backgroundColor: '#d3d3d347',
+    //backgroundColor: '#d3d3d347',
+    backgroundColor: 'white',
     fontFamily: 'Poppins, sans-serif',
+    marginTop: '15px',
+
     '@media (max-width: 900px)': {
       margin: '6px 0',
       width: '88%',
@@ -114,7 +127,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: '20px',
     padding: '3px 10px',
-    background: 'linear-gradient(to right, #e66562, #e36183)',
+    background: 'linear-gradient(to right, #e64541, #f54e7a)',
     cursor: 'pointer',
     marginTop: '15px',
     height: '39px',
@@ -123,12 +136,13 @@ const styles = StyleSheet.create({
     border: 'none',
     fontFamily: 'Poppins, sans-serif',
     ':hover': {
-      backgroundColor: 'rgba(219, 219, 219, 0.477)',
+      background: 'linear-gradient(to right, rgb(190 38 34), rgb(221 47 93))',
     },
     ':disabled': {
-      backgroundColor: '#ffffff',
+      //backgroundColor: '#ffffff',
       cursor: 'not-allowed',
-      opacity: '0.5',
+      //opacity: '0.5',
+      background: 'rgba(219, 219, 219, 0.477)',
     },
     '@media (max-width: 900px)': {
       marginLeft: 0,
@@ -144,13 +158,14 @@ const styles = StyleSheet.create({
     padding: '25px',
     //borderRadius: '33px',
     //marginTop: '30px',
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     //
     height: '100%',
+    boxSizing: 'border-box',
+    justifyContent: 'center',
     '@media (max-width: 900px)': {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
       margin: 0,
       width: '40%',
     },
@@ -158,11 +173,16 @@ const styles = StyleSheet.create({
     '@media (max-width: 600px)': {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
       margin: 0,
       width: '65%',
     },
-  }
+  },
+
+  formTitle: {
+    margin: '0',
+    fontWeight: 'bold',
+    fontSize: '2rem',
+  },
 });
 
 export default Login;
