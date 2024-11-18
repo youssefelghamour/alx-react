@@ -1,5 +1,8 @@
 import { css, StyleSheet } from "aphrodite";
 import React, { Component } from "react";
+import { getUpdates } from "../selectors/updatesSelector";
+import { fetchUpdates } from "../actions/updatesActionCreators";
+import { connect } from "react-redux";
 
 
 class Updates extends Component {
@@ -7,46 +10,26 @@ class Updates extends Component {
         super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchUpdates();
+    }
+
     render() {
+        const { listUpdates, fetchUpdates } = this.props;
+
         return (
             <aside>
                 <h3 className={css(styles.sectionTitle)}>School Updates</h3>
 
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Administration</p>
-                    <p className={css(styles.updateTitle)}>New Virtual Classroom Guidelines</p>
-                    <p className={css(styles.updateDate)}>15 November 2024</p>
-                </div>
-
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Platform Update</p>
-                    <p className={css(styles.updateTitle)}>Interactive Quizzes</p>
-                    <p className={css(styles.updateDate)}>11 November 2024</p>
-                </div>
-
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Learning</p>
-                    <p className={css(styles.updateTitle)}>Update on Peer Learning days</p>
-                    <p className={css(styles.updateDate)}>10 November 2024</p>
-                </div>
-
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Administration</p>
-                    <p className={css(styles.updateTitle)}>Online Exam Protocol Update</p>
-                    <p className={css(styles.updateDate)}>9 November 2024</p>
-                </div>
-
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Events</p>
-                    <p className={css(styles.updateTitle)}>Graduation Ceremony</p>
-                    <p className={css(styles.updateDate)}>8 November 2024</p>
-                </div>
-
-                <div className={css(styles.updateContainer)}>
-                    <p className={css(styles.updateType)}>Events</p>
-                    <p className={css(styles.updateTitle)}>News on the Book Fair</p>
-                    <p className={css(styles.updateDate)}>8 November 2024</p>
-                </div>
+                { listUpdates ? (
+                    listUpdates.map((update) => (
+                        <div className={css(styles.updateContainer)} key={update.id}>
+                            <p className={css(styles.updateType)}> {update.type} </p>
+                            <p className={css(styles.updateTitle)}> {update.title} </p>
+                            <p className={css(styles.updateDate)}> {update.date} </p>
+                        </div>
+                    ))
+                ) : (null)}
             </aside>
         );
     }
@@ -92,4 +75,12 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Updates;
+export const mapStateToProps = (state) => ({
+    listUpdates: getUpdates(state),
+});
+
+export const mapDispatchToProps = {
+    fetchUpdates,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Updates);

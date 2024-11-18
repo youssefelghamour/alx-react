@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "type": "Administration",
+        "title": "New Virtual Classroom Guidelines",
+        "date": "15 November 2024"
+    },
+    {
+        "id": 2,
+        "type": "Platform Update",
+        "title": "Interactive Quizzes",
+        "date": "11 November 2024"
+    },
+    {
+        "id": 3,
+        "type": "Learning",
+        "title": "Update on Peer Learning days",
+        "date": "10 November 2024"
+    },
+    {
+        "id": 4,
+        "type": "Administration",
+        "title": "Online Exam Protocol Update",
+        "date": "9 November 2024"
+    },
+    {
+        "id": 5,
+        "type": "Events",
+        "title": "Graduation Ceremony",
+        "date": "8 November 2024"
+    },
+    {
+        "id": 6,
+        "type": "Events",
+        "title": "News on the Book Fair",
+        "date": "8 November 2024"
+    }
+]

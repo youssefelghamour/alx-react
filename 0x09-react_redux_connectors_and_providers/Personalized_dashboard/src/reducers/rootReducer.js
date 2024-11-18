@@ -3,6 +3,7 @@ import { courseReducer } from './courseReducer';
 import { notificationReducer } from './notificationReducer';
 import { uiReducer } from './uiReducer';
 import { newsReducer } from './newsReducer';
+import { updatesReducer } from './updatesReducer';
 
 
 export const rootReducer = combineReducers({
@@ -10,4 +11,5 @@ export const rootReducer = combineReducers({
     notifications: notificationReducer,
     ui: uiReducer,
     news: newsReducer,
+    updates: updatesReducer,
 });
