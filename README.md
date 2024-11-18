@@ -9,7 +9,9 @@ This repository contains a series of React projects that build a React app, focu
 - [Overview](#overview)
 - [Tools & Libraries Used](#tools--libraries-used)
 - [Setup](#setup)
+- [Preview](#preview)
 - [Projects](#projects)
+  - [Dashboard](#personalized-dashboard)
   - [0x00. Webpack](#0x00-webpack)
   - [0x01. React Intro](#0x01-react-intro)
   - [0x02. React Props](#0x02-react-props)
@@ -40,7 +42,7 @@ git clone https://github.com/youssefelghamour/alx-react.git
 
 2. cd into the final version & Install dependencies:
 ```bash
-cd alx-react/0x09-react_redux_connectors_and_providers/task_9/dashboard
+cd alx-react/Personalized_dashboard
 npm install
 ```
 
@@ -49,9 +51,29 @@ npm install
 npm start
 ```
 
+## Preview
+
+Below are screenshots of the final product **Personalized_dashboard**, showcasing the user interface and features:
+
+### Logged Out:
+
+![App Screenshot](./Personalized_dashboard/src/assets/Screenshot_loddegOut.jpeg)
+
+### Logged In:
+
+![App Screenshot](./Personalized_dashboard/src/assets/Screenshot_loddegIn.jpeg)
+
 ## Projects
 
-### 0x00. Webpack
+### [Personalized Dashboard](./Personalized_dashboard/)
+**Overview**: I added more components (News and Updates) to the final project, that use Redux for state management and fetch data from an API. The page has also been styled to provide a better user experience.
+
+**What was done**:
+- Added **News** and **Updates** components, which fetch data from an API.
+- Integrated **Redux** for managing state in these new components.
+- Enhanced the page’s styling for a more polished look.
+
+### [0x00. Webpack](./0x00-Webpack/)
 **Overview**: Introduces setting up Webpack for a React project. This project covers the basic Webpack configuration, bundling JavaScript files, and handling assets like images and stylesheets.
 
 **What was done**:
@@ -59,7 +81,7 @@ npm start
 - Configured Webpack for bundling React and asset files.
 - Set up development and production environments with Webpack Dev Server.
 
-### 0x01. React Intro
+### [0x01. React Intro](./0x01-react_intro/)
 **Overview**: A beginner-level project to familiarize with React, its components, JSX syntax, and how React renders content.
 
 **What was done**:
@@ -67,7 +89,7 @@ npm start
 - Learned the process of rendering and displaying content dynamically.
 - Handled user events and updated the component state.
 
-### 0x02. React Props
+### [0x02. React Props](./0x02-react_props/)
 **Overview**: This project focuses on passing data between React components using props.
 
 **What was done**:
@@ -75,7 +97,7 @@ npm start
 - Managed dynamic content by changing props and observing re-renders.
 - Explored how props are used to customize the behavior of components.
 
-### 0x03. React Component
+### [0x03. React Component](./0x03-React_component/)
 **Overview**: Focuses on building React components and writing tests for them. The goal is to learn how to structure React components and ensure they function as expected.
 
 **What was done**:
@@ -87,7 +109,7 @@ npm start
 - **Component Creation**: Built various types of React components.
 - **Unit Testing**: Added tests for component functionality and rendering.
 
-### 0x04. React Inline Styling
+### [0x04. React Inline Styling](./0x04-React_inline_styling/)
 **Overview**: Explores styling React components using inline styles instead of external CSS.
 
 **What was done**:
@@ -95,7 +117,7 @@ npm start
 - Managed dynamic styles based on state changes.
 - Explored how to apply conditional styling in React components.
 
-### 0x05. React State
+### [0x05. React State](./0x05-react_state/)
 **Overview**: Teaches how to manage state in React components using the `useState` hook.
 
 **What was done**:
@@ -103,7 +125,7 @@ npm start
 - Implemented state-driven updates and re-renders in React components.
 - Focused on handling user input and controlling component behavior via state.
 
-### 0x06. React Immutable
+### [0x06. React Immutable](./0x06-React_Immutable/)
 **Overview**: Introduces the use of Immutable.js with React to handle immutable data structures, which enhances performance by reducing unnecessary re-renders.
 
 **What was done**:
@@ -111,7 +133,7 @@ npm start
 - Managed state immutably and ensured optimal performance for large datasets.
 - Integrated Immutable.js with React’s state management system.
 
-### 0x07. React Redux Action Creator & Normalizr
+### [0x07. React Redux Action Creator & Normalizr](./0x07-react_redux_action_creator_normalizr/)
 **Overview**: Focuses on managing state with Redux, integrating async actions with Redux Thunk, and using Normalizr to normalize API responses.
 
 **What was done**:
@@ -123,7 +145,7 @@ npm start
 - **Async Actions**: Managed asynchronous operations (like API calls) in Redux actions.
 - **State Normalization**: Used Normalizr to optimize handling of nested data structures in API responses.
 
-### 0x08. React Redux Reducer & Selector
+### [0x08. React Redux Reducer & Selector](./0x08-react_redux_reducer_selector/)
 **Overview**: Explores Redux reducers, selectors, and performance optimizations in state management.
 
 **What was done**:
@@ -131,7 +153,7 @@ npm start
 - Utilized selectors to extract specific state data efficiently.
 - Focused on improving the performance of state selection and rendering.
 
-### 0x09. React Redux Connectors and Providers
+### [0x09. React Redux Connectors and Providers](./0x09-react_redux_connectors_and_providers/)
 **Overview**: Focuses on connecting Redux state and actions to React components using the `connect` function and managing state with context providers.
 
 **What was done**:
