@@ -51,6 +51,10 @@ npm install
 npm start
 ```
 
+## Demo Video
+
+https://github.com/user-attachments/assets/107979b3-20d0-4cf3-9ec5-029b93b82900
+
 ## Preview
 
 Below are screenshots of the final product **Personalized_dashboard**, showcasing the user interface and features:
