@@ -13,6 +13,7 @@ module.exports = {
     devServer: {
         static: './dist',
         hot: true, // Enable hot reloading
+        historyApiFallback: true, // This ensures the app can handle client-side routes instead of server side (allow routing and accessing links)
     },
     module: {
         rules: [

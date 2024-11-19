@@ -41,7 +41,7 @@ export class Header extends Component {
           */}
           { user && user.email ? (
               <div id="logoutSection" className={css(styles.logOut)}>
-                <p style={{display: 'inline', margin: '0', color: 'grey'}}>Welcome <strong> {user.email}</strong></p>
+                <p style={{display: 'inline', margin: '0', color: 'grey'}}> {user.email}</p>
                 <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
               </div>
             ) : (<button className={css(styles.loginButton)}>Login</button>)

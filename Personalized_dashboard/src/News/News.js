@@ -3,6 +3,20 @@ import React, { Component } from "react";
 import { getNews } from "../selectors/newsSelector";
 import { fetchNews } from "../actions/newsActionCreators";
 import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+
+
+// HOC to inject navigate into a class component since it only works with function components
+// Define a function that wraps a class component and adds new functionality (in this case, navigation)
+const withNavigate = (WrappedComponent) => { 
+    return function WithNavigate(props) { 
+        // 'useNavigate' hook provides navigation function, allowing us to redirect
+        const navigate = useNavigate(); 
+
+        // Return the wrapped component with all the original props and the new 'navigate' prop
+        return <WrappedComponent {...props} navigate={navigate} />; 
+    };
+};
 
 
 class News extends Component {
@@ -14,6 +28,11 @@ class News extends Component {
         this.props.fetchNews();
     }
 
+    handleClick = (id) => {
+        // Use navigate to redirect
+        this.props.navigate(`/article/${id}`);
+    };
+
     render() {
         const { listNews, fetchNews } = this.props;
 
@@ -22,7 +41,7 @@ class News extends Component {
 
                 { listNews ? (
                     listNews.map((news) => (
-                        <div className={css(styles.newsItem)} key={news.id}>
+                        <div className={css(styles.newsItem)} key={news.id} onClick={() => this.handleClick(news.id)}>
                             <img src={news.image} className={css(styles.coverImage)}></img>
                             <div className={css(styles.infoContainer)}>
                                 <p className={css(styles.newsType)}>{news.type}</p>
@@ -99,4 +118,4 @@ export const mapDispatchToProps = {
     fetchNews,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default withNavigate(connect(mapStateToProps, mapDispatchToProps)(News));
