@@ -1,9 +1,9 @@
 import { DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from "./uiActionTypes";
 
 
-export const login = (email, password) => ({
+export const login = (user) => ({
     type: LOGIN,
-    user : { email, password, firstName: 'Youssef', lastName: 'EL GHAMOUR', studentId: '129 045', cohort: '18' },
+    user: user,
 });
 
 export const boundLogin = (email, password) => dispatch(login(email, password));
@@ -35,17 +35,26 @@ export const loginSuccess = () => ({
 });
 
 
-export const loginFailure = () => ({
+export const loginFailure = (error) => ({
     type: LOGIN_FAILURE,
+    error,
 });
 
 
 export const loginRequest = (email, password) => {
     return (dispatch) => {
-        dispatch(login(email, password));
+        return fetch('http://localhost:8080/users.json')
+            .then((res) => res.json())
+            .then((users) => {
+                const user = users.find(u => u.email === email && u.password === password);
 
-        return fetch('http://localhost:8080/login-success.json')
-            .then(() => dispatch(loginSuccess()))
+                if (user) {
+                    dispatch(login(user));
+                    dispatch(loginSuccess());
+                } else {
+                    dispatch(loginFailure("Wrong Email or Password"));
+                }
+            })
             .catch((error) => dispatch(loginFailure()));
     };
 };

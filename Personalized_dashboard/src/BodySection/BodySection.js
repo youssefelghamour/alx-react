@@ -6,7 +6,10 @@ class BodySection extends Component {
     render() {
         return (
             <div className="bodySection">
-                <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', textAlign: 'center', margin: '35px 0 0 0', lineHeight: '54px',}}>{ this.props.title }</h2>
+                { !this.props.isLoggedIn ? (
+                        <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', textAlign: 'center', margin: '35px 0 0 0', lineHeight: '54px',}}>{ this.props.title }</h2>
+                    ) : (null)
+                }
 
                 { this.props.message ? (
                         <h3 style={{fontSize: '2rem', margin: '0', textAlign: 'center', color: 'darkgray',}}>{this.props.message}</h3>
@@ -25,11 +28,13 @@ class BodySection extends Component {
 BodySection.propTypes = {
     title: PropTypes.string,
     children: PropTypes.node,
+    isLoggedIn: PropTypes.bool,
 }
 
 BodySection.defaultProps = {
     title: '',
     children: null,
+    isLoggedIn: false,
 }
 
 export default BodySection;

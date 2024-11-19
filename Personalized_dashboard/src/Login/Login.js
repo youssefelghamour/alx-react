@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types';
 import hero from '../assets/hero-bg.jpg';
+import { MdError } from "react-icons/md";
 
 
 class Login extends Component {
@@ -49,10 +50,16 @@ class Login extends Component {
           <div className={css(styles.loginContainer)}>
               <form className={css(styles.formContainer)} onSubmit={this.handleLoginSubmit}>
                 <p className={css(styles.formTitle)}>Login</p>
+                { this.props.loginError &&
+                    <p className={css(styles.errorMessage)}>
+                      <MdError className={css(styles.errorIcon)}/>
+                      {this.props.loginError}
+                    </p>
+                }
 
-                <input className={css(styles.input)}  type='email'    id='email'    name="email"    value={this.state.email}    onChange={this.handleChangeEmail}    placeholder="Email"/>
+                <input className={css(this.props.loginError && this.state.email ? styles.inputError : styles.input)}  type='email'    id='email'    name="email"    value={this.state.email}    onChange={this.handleChangeEmail}    placeholder="Email"/>
 
-                <input className={css(styles.input)}  type='password' id='password' name="password" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password"/>
+                <input className={css(this.props.loginError && this.state.password ? styles.inputError : styles.input)}  type='password' id='password' name="password" value={this.state.password} onChange={this.handleChangePassword} placeholder="Password"/>
 
                 <input className={css(styles.button)} type='submit'   value='Sign In'    disabled={!this.state.enableSubmit}/>
               </form>
@@ -101,6 +108,17 @@ const styles = StyleSheet.create({
       margin: 0,
     },
   },
+
+  errorMessage: {
+    color: '#e31c3f',
+    margin: '0',
+  },
+
+  errorIcon: {
+    position: 'relative',
+    verticalAlign: 'middle',
+    right: '2%',
+  },
     
   label: {
     margin: '8px 0',
@@ -115,6 +133,22 @@ const styles = StyleSheet.create({
     height: '30px',
     //backgroundColor: '#d3d3d347',
     backgroundColor: 'white',
+    fontFamily: 'Poppins, sans-serif',
+    marginTop: '15px',
+
+    '@media (max-width: 900px)': {
+      margin: '6px 0',
+      width: '88%',
+    },
+  },
+
+  inputError: {
+    border: '1.5px solid rgb(101 101 101 / 33%) !important',
+    padding: '3px 15px',
+    borderRadius: '20px',
+    height: '30px',
+    //backgroundColor: '#d3d3d347',
+    backgroundColor: '#ffbeca',
     fontFamily: 'Poppins, sans-serif',
     marginTop: '15px',
 

@@ -46,7 +46,7 @@ export class App extends Component {
   };
 
   render () {
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, loginRequest, logout } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, loginRequest, logout, loginError } = this.props;
 
     return (
       <Fragment>
@@ -62,7 +62,7 @@ export class App extends Component {
           <div className={css(styles.body)} >
             { isLoggedIn ? (
                 <Fragment>
-                  <BodySection title="Learn, grow, succeed.">
+                  <BodySection title="Learn, grow, succeed." isLoggedIn={isLoggedIn}>
                     <Profile />
                   </BodySection>
                   <BodySectionWithMarginBottom subtitle="Course list">
@@ -71,7 +71,7 @@ export class App extends Component {
                 </Fragment>
               ) : ( 
                 <BodySectionWithMarginBottom title="Learn, grow, succeed." message="Log in to track your progress and scores!" >
-                  <Login logIn={loginRequest}/>
+                  <Login logIn={loginRequest} loginError={loginError}/>
                 </BodySectionWithMarginBottom>
               )
             }
@@ -100,6 +100,7 @@ App.propTypes = {
   hideNotificationDrawer: PropTypes.func,
   loginRequest: PropTypes.func,
   logout: PropTypes.func,
+  loginError: PropTypes.string,
 };
 
 App.defaultProps = {
@@ -109,6 +110,7 @@ App.defaultProps = {
   hideNotificationDrawer: () => {},
   loginRequest: () => {},
   logout: () => {},
+  loginError: "",
 };
 
 const listCourses = [
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
 
 export const mapStateToProps = (state) => ({
   isLoggedIn: state.ui.get('isUserLoggedIn'),
+  loginError: state.ui.get('loginError'),
   displayDrawer: state.ui.get('isNotificationDrawerVisible'),
 });
 

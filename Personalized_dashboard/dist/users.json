@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "email": "youssefgr@email.com",
+        "password": "password1",
+        "firstName": "Youssef",
+        "lastName": "El Ghamour",
+        "studentId": "128 045",
+        "cohort": "18"
+    }
+]
