@@ -15,6 +15,7 @@ import NotificationsContainer from '../Notifications/NotificationsContainer';
 import News from '../News/News';
 import Updates from '../News/Updates';
 import NewsSectionGrid from '../News/NewsSectionGrid';
+import Profile from '../Profile/Profile';
 
 
 export class App extends Component {
@@ -60,11 +61,16 @@ export class App extends Component {
 
           <div className={css(styles.body)} >
             { isLoggedIn ? (
-                <BodySectionWithMarginBottom title="Learn, grow, succeed." subtitle="Course list">
-                  <CourseList />
-                </BodySectionWithMarginBottom>
+                <Fragment>
+                  <BodySection title="Learn, grow, succeed.">
+                    <Profile />
+                  </BodySection>
+                  <BodySectionWithMarginBottom subtitle="Course list">
+                    <CourseList />
+                  </BodySectionWithMarginBottom>
+                </Fragment>
               ) : ( 
-                <BodySectionWithMarginBottom title="Learn, grow, succeed." message="Unlock your potential – log in to learn!" >
+                <BodySectionWithMarginBottom title="Learn, grow, succeed." message="Log in to track your progress and scores!" >
                   <Login logIn={loginRequest}/>
                 </BodySectionWithMarginBottom>
               )

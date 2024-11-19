@@ -26,14 +26,26 @@ class CourseList extends Component {
     }
 
     render () {
-        const { listCourses, fetchCourses, selectCourse, unSelectCourse } = this.props;
+        const { listCourses, fetchCourses, selectCourse, unSelectCourse, user } = this.props;
 
         return (
             <div className={css(styles.CourseListContainer)}>
+                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
+                    <div>
+                        <p style={{margin: '0',}}>Sprint #1: <strong>156.64%</strong> </p>
+                        <p style={{margin: '0',}}>Sprint #2: <strong>In Progress</strong> </p>
+                        <p style={{margin: '0',}}>Upcoming Evaluations: <strong>Exam - Dec 5</strong></p>
+                    </div>
+                    <div style={{alignSelf: 'end'}}>
+                        <p style={{margin: '0', float: 'inline-end'}}>Enrolled Courses: <strong>{listCourses.size}</strong></p>
+                    </div>
+                </div>
+
                 <table id="CourseList" className={css(styles.table)} >
                     <thead>
                         <CourseListRow isHeader={ true } textFirstCell="Available courses" />
-                        <CourseListRow isHeader={ true } textFirstCell="Course name" textSecondCell="Credit" />
+                        <CourseListRow isHeader={ true } textFirstCell="Course name" textSecondCell="Score" textThirdCell="Start Date" textFourthCell="End Date"
+                                                         textFifthCell="Duration" textSixthCell="status" />
                     </thead>
 
                     <tbody>
@@ -42,8 +54,12 @@ class CourseList extends Component {
                                 <CourseListRow
                                     key={ course.id }
                                     id={course.id}
-                                    textFirstCell={ course.name }
-                                    textSecondCell={ course.credit }
+                                    name={ course.name }
+                                    credit={ course.credit }
+                                    startDate={ course.start_date }
+                                    endDate={ course.end_date }
+                                    duration={ course.duration }
+                                    status={ course.status }
                                     isHeader={ false }
                                     isChecked={ course.isSelected }
                                     onChangeRow={ this.onChangeRow }
@@ -64,6 +80,7 @@ CourseList.propTypes = {
     fetchCourses: PropTypes.func,
     selectCourse: PropTypes.func,
     unSelectCourse: PropTypes.func,
+    user: PropTypes.object,
 };
 
 CourseList.defaultProps = {
@@ -71,22 +88,25 @@ CourseList.defaultProps = {
     fetchCourses: () => {},
     selectCourse: () => {},
     unSelectCourse: () => {},
+    user: {},
 }
 
 const styles = StyleSheet.create({
     CourseListContainer: {
-        padding: '2rem',
+        padding: '2rem 0',
     },
 
     table: {
         width: '100%',
         textAlign: 'left',
         border: '1px solid lightgrey',
+        fontSize: '15px',
     }
 });
 
 export const mapStateToProps = (state) => ({
     listCourses: getCourses(state),
+    user: state.ui.get('user'),
 });
 
 const mapDispatchToProps = {

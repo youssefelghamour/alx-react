@@ -18,7 +18,7 @@ export class Header extends Component {
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
           <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1>
           
-          <div style={{display: 'flex', alignItems: 'center', position: 'absolute', top: '40px', left: '50%', transform: 'translateX(-50%)',}}>
+          <div className={css(styles.navContainer)}>
               <a href="#" className={css(styles.nav)}>
                   Home
               </a>
@@ -40,10 +40,10 @@ export class Header extends Component {
               or set to null when the user logs out. In both case the check will be false
           */}
           { user && user.email ? (
-              <p id="logoutSection" className={css(styles.logOut)}>
-                Welcome {user.email}
+              <div id="logoutSection" className={css(styles.logOut)}>
+                <p style={{display: 'inline', margin: '0', color: 'grey'}}>Welcome <strong> {user.email}</strong></p>
                 <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
-                </p>
+              </div>
             ) : (<button className={css(styles.loginButton)}>Login</button>)
           }
       </div>
@@ -96,6 +96,12 @@ const styles = StyleSheet.create({
     left: '12%',
     padding: '12px',
     borderRadius: '20px',
+    transition: 'transform filter 0.3s ease',
+
+    ':hover': {
+      transform: 'scale(103%)',
+      filter: 'hue-rotate(30deg)',
+    },
   },
 
   h1: {
@@ -107,6 +113,10 @@ const styles = StyleSheet.create({
     background: 'linear-gradient(to right, #e31c3f, rgb(227, 97, 131))',
     WebkitBackgroundClip: 'text',
     color: 'transparent',
+
+    '@media (max-width: 600px)': {
+      display: 'none',
+    },
   },
 
   logOut: {
@@ -114,11 +124,31 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'end',
+    position: 'absolute',
+    right: '12%',
   },
 
   logOutButton: {
     fontWeight: 'bold',
     cursor: 'pointer',
+    
+    ':hover': {
+      transform: 'scale(110%)',
+      color: '#a90318',
+    },
+  },
+
+  navContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'absolute',
+    top: '40px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+
+    '@media (max-width: 600px)': {
+      display: 'none',
+    },
   },
 
   nav: {

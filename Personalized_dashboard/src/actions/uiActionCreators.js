@@ -3,7 +3,7 @@ import { DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN, LOGIN_FAI
 
 export const login = (email, password) => ({
     type: LOGIN,
-    user : { email, password },
+    user : { email, password, firstName: 'Youssef', lastName: 'EL GHAMOUR', studentId: '129 045', cohort: '18' },
 });
 
 export const boundLogin = (email, password) => dispatch(login(email, password));

@@ -14,7 +14,7 @@ class BodySection extends Component {
                 }
                 
 
-                <h3 style={{fontSize: '2rem', margin: '8px 0 0 0',}}>{this.props.subtitle}</h3>
+                <h3 style={{fontSize: '2rem', /*margin: '8px 0 0 0',*/ margin: '0',}}>{this.props.subtitle}</h3>
 
                 { this.props.children }
             </div>
