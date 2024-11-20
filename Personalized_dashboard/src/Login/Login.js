@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types';
-import hero from '../assets/hero-bg.jpg';
+import hero from '../assets/hero-bg1.jpg';
 import { MdError } from "react-icons/md";
 
 
@@ -47,6 +47,12 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className={css(styles.loginSection)}>
+          <div style={{alignContent: 'center', margin: 0, justifyItems: 'start', padding: '60px 60px 60px 100px', width: '40%'}}>
+            <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', margin: 0, textAlign: 'center', lineHeight: '54px',}}>Learn, Grow, Succeed.</h2>
+            <h3 style={{fontSize: '2rem', margin: '0', textAlign: 'center', color: 'transparent', fontWeight: '100', background: 'linear-gradient(to right, rgb(224 93 93), rgb(255 205 218)) text', WebkitBackgroundClip: 'text',}}>Log in to track your progress and scores!</h3>
+          </div>
+
+
           <div className={css(styles.loginContainer)}>
               <form className={css(styles.formContainer)} onSubmit={this.handleLoginSubmit}>
                 <p className={css(styles.formTitle)}>Login</p>
@@ -89,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundPosition: 'center',
     color: 'white',
     //borderRadius: '25px',
-    height: '400px',
+    height: '70vh',
   },
 
   loginContainer: {
@@ -104,6 +110,8 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: '1',
     //backgroundColor: 'white',
+    alignContent: 'center',
+
     '@media (max-width: 900px)': {
       margin: 0,
     },
@@ -129,10 +137,10 @@ const styles = StyleSheet.create({
   input: {
     border: '1.5px solid rgb(101 101 101 / 33%) !important',
     padding: '3px 15px',
-    //borderRadius: '20px',
+    borderRadius: '20px',
     height: '30px',
-    //backgroundColor: '#d3d3d347',
-    backgroundColor: 'white',
+    backgroundColor: '#d3d3d347',
+    //backgroundColor: 'white',
     fontFamily: 'Poppins, sans-serif',
     marginTop: '15px',
 
@@ -159,7 +167,7 @@ const styles = StyleSheet.create({
   },
     
   button: {
-    //borderRadius: '20px',
+    borderRadius: '20px',
     padding: '3px 10px',
     background: 'linear-gradient(to right, #e64541, #f54e7a)',
     cursor: 'pointer',
@@ -187,16 +195,17 @@ const styles = StyleSheet.create({
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: '35%',
-    //boxShadow: '2px 2px 9px #0000001f',
+    width: '45%',
+    boxShadow: '2px 2px 9px #0000001f',
     padding: '25px',
-    //borderRadius: '33px',
+    borderRadius: '33px',
     //marginTop: '30px',
-    //backgroundColor: 'white',
+    backgroundColor: 'white',
     //
-    height: '100%',
+    height: 'max-content',
     boxSizing: 'border-box',
     justifyContent: 'center',
+    
     '@media (max-width: 900px)': {
       display: 'flex',
       flexDirection: 'column',
@@ -215,7 +224,8 @@ const styles = StyleSheet.create({
   formTitle: {
     margin: '0',
     fontWeight: 'bold',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
+    color: 'black',
   },
 });
 

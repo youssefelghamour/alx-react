@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#e9e9e9',
         color: 'black',
         background: 'linear-gradient(238deg, rgb(228 228 228) 37%, rgb(178 178 178))',
+        borderRadius: '20px',
+        clipPath: 'border-box',
     },
 
     text: {

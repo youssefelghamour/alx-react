@@ -71,7 +71,7 @@ export class Home extends Component {
                   </BodySectionWithMarginBottom>
                 </Fragment>
               ) : ( 
-                <BodySectionWithMarginBottom subtitle="Log in to track your progress and scores!" >
+                <BodySectionWithMarginBottom heroSection={true}>
                   <Login logIn={loginRequest} loginError={loginError}/>
                 </BodySectionWithMarginBottom>
               )
@@ -127,10 +127,10 @@ const listCourses = [
 const styles = StyleSheet.create({
   body: {
     display: 'block',
-    margin: '15px',
+    //margin: '15px',
     fontFamily: 'Poppins, sans-serif',
     minHeight: '62vh',
-    width: '75%',
+    width: '100%',
     justifySelf: 'center',
   },
 
