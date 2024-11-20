@@ -48,6 +48,14 @@ const styles = StyleSheet.create({
         display: 'grid',
         gridTemplateColumns: '1fr 1fr 1fr 1fr',
         gap: '30px',
+
+        '@media (max-width: 1080px)': {
+            gridTemplateColumns: '1fr 1fr',
+        },
+
+        '@media (max-width: 550px)': {
+            gridTemplateColumns: '1fr',
+        },
     },
 
     middleButton: {
@@ -58,14 +66,21 @@ const styles = StyleSheet.create({
         //background: 'linear-gradient(149deg, #e1003c 37%, #f100a5)',
         backgroundColor: '#e9e9e9',
         color: 'black',
-        background: 'linear-gradient(238deg, rgb(228 228 228) 37%, rgb(178 178 178))',
+        //background: 'linear-gradient(145deg, #8e9eab 0%, #eef2f3  51%)',
+        //background: 'linear-gradient(329deg, rgb(165 149 157) 0%, rgb(233 233 233) 51%, white 100%)',
+        background: 'linear-gradient(68deg, #e9e9e9, #e9e9e921) !important',
         borderRadius: '20px',
         clipPath: 'border-box',
+        cursor: 'pointer',
+
+        ':hover': {
+            background: 'linear-gradient(329deg, rgb(165 149 157) 0%, rgb(233 233 233) 51%, white 100%)',
+        },
     },
 
     text: {
-        padding: '12px 0 12px 25px',
-        fontSize: '17px',
+        padding: '10px 25px',
+        fontSize: '14px',
         fontWeight: 'bold',
     },
 
@@ -75,7 +90,12 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         textAlign: 'center',
         padding: '0 15px',
-        background: 'linear-gradient(238deg, rgb(228 228 228) 37%, rgb(178 178 178))',
-        color: 'white',
+        //background: 'linear-gradient(145deg, #8e9eab 0%, #eef2f3  51%)',
+        background: 'linear-gradient(321deg, rgb(165 149 157) 0%, rgb(233 233 233) 51%, white 100%)',
+        color: 'black',
+
+        ':hover': {
+            background: 'llinear-gradient(329deg, rgb(165 149 157) 0%, rgb(233 233 233) 51%, white 100%)',
+        },
     },
 });

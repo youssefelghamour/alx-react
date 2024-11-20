@@ -47,9 +47,11 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div className={css(styles.loginSection)}>
-          <div style={{alignContent: 'center', margin: 0, justifyItems: 'start', padding: '60px 60px 60px 100px', width: '40%'}}>
-            <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', margin: 0, textAlign: 'center', lineHeight: '54px',}}>Learn, Grow, Succeed.</h2>
-            <h3 style={{fontSize: '2rem', margin: '0', textAlign: 'center', color: 'transparent', fontWeight: '100', background: 'linear-gradient(to right, rgb(224 93 93), rgb(255 205 218)) text', WebkitBackgroundClip: 'text',}}>Log in to track your progress and scores!</h3>
+
+          <div className={css(styles.leftHeroContainer)}>
+            <h2 className={css(styles.heroTitle)}>Learn, Grow, Succeed.</h2>
+            <h3 className={css(styles.heroSubtitle)}>Log in to track your progress & scores!</h3>
+            <button className={css(styles.heroButton)}>Make Your Way</button>
           </div>
 
 
@@ -70,6 +72,7 @@ class Login extends Component {
                 <input className={css(styles.button)} type='submit'   value='Sign In'    disabled={!this.state.enableSubmit}/>
               </form>
           </div>
+
         </div>
       </React.Fragment>
     );
@@ -95,7 +98,77 @@ const styles = StyleSheet.create({
     backgroundPosition: 'center',
     color: 'white',
     //borderRadius: '25px',
-    height: '70vh',
+    minHeight: '70vh',
+
+    '@media (max-width: 900px)': {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  },
+
+  leftHeroContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    textAlign: 'start',
+    alignSelf: 'center',
+    margin: 0,
+    justifyItems: 'start',
+    padding: '60px 60px 60px 100px',
+    width: '40%',
+
+    '@media (max-width: 900px)': {
+      padding: '60px 0',
+      width: '70%',
+    }
+  },
+
+  heroTitle: {
+    fontSize: '3.5rem',
+    letterSpacing: '-5px',
+    margin: 0,
+    lineHeight: '54px',
+
+    '@media (max-width: 900px)': {
+      textAlign: 'center',
+      alignSelf: 'center',
+    }
+  },
+
+  heroSubtitle: {
+    fontSize: '2rem',
+    margin: '0',
+    color: 'transparent',
+    fontWeight: '100',
+    background: 'linear-gradient(to right, rgb(224 93 93), rgb(255 205 218)) text',
+    WebkitBackgroundClip: 'text',
+
+    '@media (max-width: 900px)': {
+      textAlign: 'center',
+    }
+  },
+
+  heroButton: {
+    border: '1px solid #ffffff80',
+    backgroundColor: 'transparent',
+    color: 'white',
+    borderRadius: '20px',
+    fontSize: '0.8rem',
+    padding: '9px 18px',
+    margin: '10px 0',
+    textAlign: 'center',
+    fontWeight: '100',
+    fontFamily: 'Poppins',
+    cursor: 'pointer',
+
+    ':hover': {
+      backgroundColor: 'black',
+      border: '1px solid white',
+    },
+
+    '@media (max-width: 900px)': {
+      alignSelf: 'center',
+    }
   },
 
   loginContainer: {
@@ -111,10 +184,7 @@ const styles = StyleSheet.create({
     flex: '1',
     //backgroundColor: 'white',
     alignContent: 'center',
-
-    '@media (max-width: 900px)': {
-      margin: 0,
-    },
+    alignSelf: 'center',
   },
 
   errorMessage: {
@@ -135,7 +205,7 @@ const styles = StyleSheet.create({
   },
     
   input: {
-    border: '1.5px solid rgb(101 101 101 / 33%) !important',
+    border: '1.5px solid #b7b7b754 !important',
     padding: '3px 15px',
     borderRadius: '20px',
     height: '30px',
@@ -185,6 +255,7 @@ const styles = StyleSheet.create({
       cursor: 'not-allowed',
       //opacity: '0.5',
       background: 'rgba(219, 219, 219, 0.477)',
+      color: '#b1b1b1',
     },
     '@media (max-width: 900px)': {
       marginLeft: 0,
@@ -206,18 +277,25 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box',
     justifyContent: 'center',
     
+    '@media (max-width: 1080px)': {
+      margin: 0,
+      width: '70%',
+    },
+
     '@media (max-width: 900px)': {
       display: 'flex',
       flexDirection: 'column',
       margin: 0,
-      width: '40%',
+      width: '70%',
+      marginBottom: '70px',
     },
 
-    '@media (max-width: 600px)': {
+    '@media (max-width: 700px)': {
       display: 'flex',
       flexDirection: 'column',
       margin: 0,
-      width: '65%',
+      width: '80%',
+      marginBottom: '60px',
     },
   },
 
