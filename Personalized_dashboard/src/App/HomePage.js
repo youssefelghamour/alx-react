@@ -141,11 +141,11 @@ const styles = StyleSheet.create({
     left: 0,*/
     width: '100%',
     textAlign: 'center',
-    fontSize: '1rem',
-    fontFamily: 'sans-serif',
+    fontSize: '0.85rem',
+    fontFamily: 'Poppins',
     fontWeight: 400,
-    borderTop: 'solid 3px #e0354b',
-    fontStyle: 'italic',
+    //borderTop: 'solid 3px #e0354b',
+    //fontStyle: 'italic',
   },
 });
 
