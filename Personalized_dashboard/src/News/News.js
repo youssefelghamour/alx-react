@@ -88,9 +88,11 @@ const styles = StyleSheet.create({
 
     infoContainer: {
         padding: '8px 15px',
-        backgroundColor: '#f2b1b282',
+        /*backgroundColor: '#f2b1b282',
         background: 'linear-gradient(149deg, #e1003c 37%, #f100a5)',
-        color: 'white',
+        color: 'white',*/
+        backgroundColor: '#b7b7b74f',
+        color: 'black',
     },
 
     newsType: {

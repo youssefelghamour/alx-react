@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     color: 'white',
-    borderRadius: '25px',
+    //borderRadius: '25px',
     height: '400px',
   },
 
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   input: {
     border: '1.5px solid rgb(101 101 101 / 33%) !important',
     padding: '3px 15px',
-    borderRadius: '20px',
+    //borderRadius: '20px',
     height: '30px',
     //backgroundColor: '#d3d3d347',
     backgroundColor: 'white',
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   },
     
   button: {
-    borderRadius: '20px',
+    //borderRadius: '20px',
     padding: '3px 10px',
     background: 'linear-gradient(to right, #e64541, #f54e7a)',
     cursor: 'pointer',

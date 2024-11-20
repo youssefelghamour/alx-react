@@ -155,8 +155,9 @@ const styles = StyleSheet.create({
         boxShadow: '2px 3px 7px #a7a6a6cc',
         padding: '10px 11px 4px',
         position: 'fixed',
-        backgroundColor: '#e1003c',
+        //backgroundColor: '#e1003c',
         zIndex: '1',
+        backgroundColor: '#bebebe',
 
         ':hover': {
             animationName: [opacityKeyframes, translateKeyframes],
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
         right: '3%',
         zIndex: '1',
         color: 'white',
-        textShadow: '-1px -1px 0 #e1003c, 1px -1px 0 #e1003c, -1px 1px 0 #e1003c, 1px 1px 0 #e1003c',
+        //textShadow: '-1px -1px 0 #e1003c, 1px -1px 0 #e1003c, -1px 1px 0 #e1003c, 1px 1px 0 #e1003c',
         width: '14px',
     },
 

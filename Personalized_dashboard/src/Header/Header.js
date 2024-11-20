@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../assets/header-logo.png';
+import logo from '../../dist/favicon.ico';
 import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
 import { logout } from '../actions/uiActionCreators';
@@ -16,14 +16,15 @@ export class Header extends Component {
     return (
       <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}>
           <img className={css(styles.img)} src={logo} alt="Holberton logo" />
-          <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1>
+          {/* <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1> */}
+          
           
           <div className={css(styles.navContainer)}>
               <a href="#" className={css(styles.nav)}>
                   Home
               </a>
 
-              <a href="#body" className={css(styles.nav)} style={{margin: '0 25px',}}>
+              <a href="#body" className={css(styles.nav)}>
                   Courses
               </a>
 
@@ -31,6 +32,9 @@ export class Header extends Component {
                   News
               </a>
 
+              <a href="#news" className={css(styles.nav)}>
+                  Updates
+              </a>
               
           </div>
           
@@ -81,8 +85,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins, sans-serif',
     //background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
     backgroundColor: '#ffffffb3',
-    borderBottomLeftRadius: '20px',
-    borderBottomRightRadius: '20px',
+    //borderBottomLeftRadius: '20px',
+    //borderBottomRightRadius: '20px',
     boxShadow: '0 8px 16px #0003',
     position: 'sticky',
     top: '0',
@@ -110,9 +114,10 @@ const styles = StyleSheet.create({
     top: '-10%',
     left: '50%',
     transform: 'translateX(-50%)',
-    background: 'linear-gradient(to right, #e31c3f, rgb(227, 97, 131))',
+    //background: 'linear-gradient(to right, #e31c3f, rgb(227, 97, 131))',
     WebkitBackgroundClip: 'text',
-    color: 'transparent',
+    //color: 'transparent',
+    color: 'black',
 
     '@media (max-width: 600px)': {
       display: 'none',
@@ -142,9 +147,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     position: 'absolute',
-    top: '40px',
+    //top: '40px',
+    top: '33%',
     left: '50%',
     transform: 'translateX(-50%)',
+    gap: '13px',
 
     '@media (max-width: 600px)': {
       display: 'none',
@@ -169,7 +176,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: 'bold',
     borderRadius: '25px',
-    backgroundColor: '#000000',
+    backgroundColor: '#d2d2d2',
     cursor: 'pointer',
 
     ':hover': {

@@ -16,6 +16,7 @@ import News from '../News/News';
 import Updates from '../News/Updates';
 import NewsSectionGrid from '../News/NewsSectionGrid';
 import Profile from '../Profile/Profile';
+import MiddleButtons from '../MiddleButtons/MiddleButtons';
 
 
 export class Home extends Component {
@@ -62,7 +63,7 @@ export class Home extends Component {
           <div className={css(styles.body)} >
             { isLoggedIn ? (
                 <Fragment>
-                  <BodySection title="Learn, grow, succeed." isLoggedIn={isLoggedIn}>
+                  <BodySection>
                     <Profile />
                   </BodySection>
                   <BodySectionWithMarginBottom subtitle="Course list">
@@ -70,11 +71,15 @@ export class Home extends Component {
                   </BodySectionWithMarginBottom>
                 </Fragment>
               ) : ( 
-                <BodySectionWithMarginBottom title="Learn, grow, succeed." message="Log in to track your progress and scores!" >
+                <BodySectionWithMarginBottom subtitle="Log in to track your progress and scores!" >
                   <Login logIn={loginRequest} loginError={loginError}/>
                 </BodySectionWithMarginBottom>
               )
             }
+
+            <BodySection>
+              <MiddleButtons />
+            </BodySection>
 
             <BodySection subtitle="News from the School">
               <NewsSectionGrid>

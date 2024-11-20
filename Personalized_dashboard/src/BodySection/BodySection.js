@@ -6,10 +6,8 @@ class BodySection extends Component {
     render() {
         return (
             <div className="bodySection">
-                { !this.props.isLoggedIn ? (
-                        <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', textAlign: 'center', margin: '35px 0 0 0', lineHeight: '54px',}}>{ this.props.title }</h2>
-                    ) : (null)
-                }
+                <h2 style={{fontSize: '3.5rem', letterSpacing: '-5px', textAlign: 'center', margin: '35px 0 0 0', lineHeight: '54px',}}>{ this.props.title }</h2>
+
 
                 { this.props.message ? (
                         <h3 style={{fontSize: '2rem', margin: '0', textAlign: 'center', color: 'darkgray',}}>{this.props.message}</h3>
@@ -17,7 +15,7 @@ class BodySection extends Component {
                 }
                 
 
-                <h3 style={{fontSize: '2rem', /*margin: '8px 0 0 0',*/ margin: '0',}}>{this.props.subtitle}</h3>
+                <h3 style={{fontSize: '1.5rem', /*margin: '8px 0 0 0',*/}}>{this.props.subtitle}</h3>
 
                 { this.props.children }
             </div>
