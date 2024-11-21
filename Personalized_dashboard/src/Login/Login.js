@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundPosition: 'center',
     color: 'white',
     //borderRadius: '25px',
-    minHeight: '70vh',
+    minHeight: '80vh',
 
     '@media (max-width: 900px)': {
       flexDirection: 'column',

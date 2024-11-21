@@ -8,48 +8,71 @@ import { logout } from '../actions/uiActionCreators';
 export class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      scrolled: false,
+    };
+  }
+
+  handleScroll = () => {
+    // Checks if the vertical scroll position is greater than 50px
+    this.setState({ scrolled: window.scrollY > 50 });
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   render () {
     const { user, logout } = this.props;
 
     return (
-      <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}>
-          <img className={css(styles.img)} src={logo} alt="Holberton logo" />
-          {/* <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1> */}
-          
-          
-          <div className={css(styles.navContainer)}>
-              <a href="#" className={css(styles.nav)}>
-                  Home
-              </a>
+      <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}
+            style={{ backgroundColor: this.state.scrolled ? '#ffffffb3' : 'transparent',
+                      backdropFilter: this.state.scrolled ? 'blur(10px)' : '',
+                      boxShadow: this.state.scrolled ? '0 8px 16px #0003' : '',
+                      transition: 'background-color 0.55s ease'
+            }}
+        >
+      
+        <img className={css(styles.img)} src={logo} alt="Holberton logo" />
+        {/* <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1> */}
+        
+        
+        <div className={css(styles.navContainer)}>
+            <a href="#" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+                Home
+            </a>
 
-              <a href="#body" className={css(styles.nav)}>
-                  Courses
-              </a>
+            <a href="#body" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+                Courses
+            </a>
 
-              <a href="#news" className={css(styles.nav)}>
-                  News
-              </a>
+            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+                News
+            </a>
 
-              <a href="#news" className={css(styles.nav)}>
-                  Updates
-              </a>
-              
-          </div>
-          
-          {/* user.email to confirm the user is logged in and has an email
+            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+                Updates
+            </a>
+            
+        </div>
+        
+        {/* user.email to confirm the user is logged in and has an email
 
-              The whole user object is {} when the user isn't logged in,
-              or set to null when the user logs out. In both case the check will be false
-          */}
-          { user && user.email ? (
-              <div id="logoutSection" className={css(styles.logOut)}>
-                <p style={{display: 'inline', margin: '0', color: 'grey'}}> {user.email}</p>
-                <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
-              </div>
-            ) : (<button className={css(styles.loginButton)}>Login</button>)
-          }
+            The whole user object is {} when the user isn't logged in,
+            or set to null when the user logs out. In both case the check will be false
+        */}
+        { user && user.email ? (
+            <div id="logoutSection" className={css(styles.logOut)}>
+              <p style={{display: 'inline', margin: '0', color: 'grey'}}> {user.email}</p>
+              <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
+            </div>
+          ) : (<button className={css(styles.loginButton)} style={{ backgroundColor: this.state.scrolled ? '#d2d2d2' : '#d2d2d238', transition: 'background-color 0.55s ease'}}>Login</button>)
+        }
       </div>
     );
   }
@@ -84,13 +107,13 @@ const styles = StyleSheet.create({
     width: '100%',
     fontFamily: 'Poppins, sans-serif',
     //background: 'linear-gradient(355deg, #e0354ba3 -118%, #00000000 67%)',
-    backgroundColor: '#ffffffb3',
+    /*backgroundColor: '#ffffffb3',*/
     //borderBottomLeftRadius: '20px',
     //borderBottomRightRadius: '20px',
-    boxShadow: '0 8px 16px #0003',
-    position: 'sticky',
+    /*boxShadow: '0 8px 16px #0003',*/
+    position: 'fixed',
     top: '0',
-    backdropFilter: 'blur(10px)',
+    /*backdropFilter: 'blur(10px)',*/
     zIndex: '1',
   },
 
@@ -159,7 +182,7 @@ const styles = StyleSheet.create({
   },
 
   nav: {
-    color: 'black',
+    //color: 'black',
     textDecoration: 'none',
     fontWeight: 'bold',
 
@@ -176,7 +199,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: 'bold',
     borderRadius: '25px',
-    backgroundColor: '#d2d2d2',
+    //backgroundColor: '#d2d2d2',
     cursor: 'pointer',
 
     ':hover': {
