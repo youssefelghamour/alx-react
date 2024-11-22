@@ -8,6 +8,11 @@ import { Footer } from "../Footer/Footer";
 import { connect } from "react-redux";
 import { getNews, getNewsById } from "../selectors/newsSelector";
 import { fetchNews } from "../actions/newsActionCreators";
+import NewsSectionGrid from "../News/NewsSectionGrid";
+import Updates from "../News/Updates";
+import { GoClock } from "react-icons/go";
+import News from "../News/News";
+
 
 
 /* HOC that adds URL params to a class component,
@@ -39,42 +44,52 @@ class Article extends Component {
     componentDidMount() {
         // Adds new to the redux store
         this.props.fetchNews();
+        window.scrollTo(0, 0);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.article && this.props.article.title && this.props.article !== prevProps.article) {
+            document.title = `Holberton School - ${this.props.article.title}`;
+        }
     }
 
     render () {
         // Get the article Id from URL params and nameit articleId
         const { id: articleId } = this.props.params;
+        const { article } = this.props;
 
         return (
             <Fragment>
                 <Header isHomePage={false}/>
                 
-                { this.props.article ? (
+                { article ? (
                     <div className={css(styles.body)}>
 
-                        <BodySection subtitle="News from the School">
-                            <div>
-                                <h1 className="articleTitle">{this.props.article.title}</h1>
+                        <BodySection>
+                            <NewsSectionGrid>
+                                <div>
+                                    <p className={css(styles.path)}>Home / News / {article.title}</p>
+                                    <p className={css(styles.date)}><GoClock /> {article.date}</p>
 
-                                <div className="article-content">
-                                    <img src={`/${this.props.article.image}`} alt="Article Image" className={css(styles.articleImage)} />
-                                    <div>
-                                        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Cras natoque leo mi himenaeos mattis.</p>
-                                        <p><strong>Subheading 1:</strong> Here is a subheading with more details:</p>
-                                        <ul>
-                                            <li>Point 1</li>
-                                            <li>Point 2</li>
-                                            <li>Point 3</li>
-                                        </ul>
-                                        <p>End of the article content</p>
-                                    </div>
+                                    <img src={`/${article.image}`} alt="Article Image" className={css(styles.image)} />
+
+                                    <h1 className={css(styles.title)}>{article.title}</h1>
+                                    <h2 className={css(styles.subtitle)}>{article.subtitle}</h2>
+        
+                                    <div className={css(styles.content)} dangerouslySetInnerHTML={{ __html: article.content }} />
+
+                                    <button onClick={() => this.props.navigate("/")} className={css(styles.backHomeButton)}>Back to Home</button>
                                 </div>
 
-                                <button onClick={() => this.props.navigate("/")} className="backHomeButton">Back to Home</button>
-                            </div>
+                                <div style={{padding: '20px'}}>
+                                    <Updates />
+                                </div>
+                            </NewsSectionGrid>
                         </BodySection>
                     </div>
                 ) : (null)}
+
+                
                 
 
                 <div className={css(styles.footer)} >
@@ -88,15 +103,64 @@ class Article extends Component {
 const styles = StyleSheet.create({
     body: {
         display: 'block',
-        margin: '15px',
+        margin: '40px 15px 15px',
         fontFamily: 'Poppins, sans-serif',
-        width: '75%',
+        //width: '75%',
         justifySelf: 'center',
         minHeight: '70vh',
     },
 
-    articleImage: {
-        width: '200px',
+    path: {
+        margin: '0',
+        fontSize: '13px',
+        color: '#b8b8b8',
+    },
+
+    date: {
+        display: 'flex',
+        gap: '7px',
+        alignItems: 'center',
+        marginTop: '4px',
+    },
+
+    image: {
+        width: '100%',
+        height: '300px',
+        objectFit: 'cover',
+        transition: 'transform 0.3 ease',
+
+        ':hover': {
+            transform: 'scale(101%)',
+        },
+    },
+
+    title: {
+        margin: '8px 0 0',
+    },
+
+    subtitle: {
+        marginTop: 0,
+        fontWeight: '100',
+        fontSize: '19px',
+        color: 'grey',
+    },
+
+    content: {
+        fontSize: '0.9rem',
+    },
+
+    backHomeButton: {
+        border: 'none',
+        backgroundColor: '#b7b7b74f',
+        padding: '8px 16px',
+        fontWeight: 'bold',
+        borderRadius: '25px',
+        cursor: 'pointer',
+
+        ':hover': {
+            backgroundColor: 'grey',
+            color: 'white',
+        },
     },
 
     footer: {
@@ -109,7 +173,6 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif',
         fontWeight: 400,
         borderTop: 'solid 3px #e0354b',
-        fontStyle: 'italic',
     },
 });
 

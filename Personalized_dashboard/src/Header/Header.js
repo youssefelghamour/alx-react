@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     position: 'sticky',
     top: '0',
     backdropFilter: 'blur(10px)',
+    zIndex: '1',
   },
 
   AppHeader: {
