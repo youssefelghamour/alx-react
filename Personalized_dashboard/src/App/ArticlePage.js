@@ -47,7 +47,7 @@ class Article extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <Header isHomePage={false}/>
                 
                 { this.props.article ? (
                     <div className={css(styles.body)}>
@@ -57,7 +57,7 @@ class Article extends Component {
                                 <h1 className="articleTitle">{this.props.article.title}</h1>
 
                                 <div className="article-content">
-                                    <img src={this.props.article.img} alt="Article Image" className="articleImage" />
+                                    <img src={`/${this.props.article.image}`} alt="Article Image" className={css(styles.articleImage)} />
                                     <div>
                                         <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Cras natoque leo mi himenaeos mattis.</p>
                                         <p><strong>Subheading 1:</strong> Here is a subheading with more details:</p>
@@ -90,14 +90,17 @@ const styles = StyleSheet.create({
         display: 'block',
         margin: '15px',
         fontFamily: 'Poppins, sans-serif',
-        minHeight: '62vh',
         width: '75%',
         justifySelf: 'center',
+        minHeight: '70vh',
+    },
+
+    articleImage: {
+        width: '200px',
     },
 
     footer: {
-        
-        position: 'absolute',
+        //position: 'absolute',
         bottom: 0,
         left: 0,
         width: '100%',

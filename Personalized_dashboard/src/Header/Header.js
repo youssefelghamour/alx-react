@@ -27,51 +27,79 @@ export class Header extends Component {
   }
 
   render () {
-    const { user, logout } = this.props;
+    const { user, logout, isHomePage, isLoggedIn } = this.props;
+
+    /*
+      -> When logged in:
+              -> Same style for all pages:
+                  - The header's position is sticky: at the top of the page (has its own space) but scrolls with you.
+                  - The background color remains white.
+
+      -> When the user is not logged in:
+              -> On the home page:
+                  - The header's position is fixed: stays on top of the hero/login (z axis, doesn't have its own space) section and scrolls with you.
+                  - the style on scroll allows it to change on scroll: from transparent background to white.
+
+              -> On any page other than the home page:
+                  - The header's position is sticky: at the top of the page (has its own space) but scrolls with you.
+                  - The background color remains white.
+    */
+    const headerClass = isLoggedIn ? styles.AppHeaderLoggedIn : (isHomePage ? styles.AppHeader : styles.AppHeaderArticlePage);
+
+    /* Only the home page is concerned with the on scroll style change:
+        - when you scroll down it changes from transparent backrgound to white
+    */
+    const headerStyle = isHomePage ?
+        {
+          backgroundColor: this.state.scrolled ? '#ffffffb3' : 'transparent',
+          backdropFilter: this.state.scrolled ? 'blur(10px)' : '',
+          boxShadow: this.state.scrolled ? '0 8px 16px #0003' : '',
+          transition: 'background-color 0.55s ease',
+        }
+      : {};
+
 
     return (
-      <div className={css(user && user.email ? styles.AppHeaderLoggedIn : styles.AppHeader)}
-            style={{ backgroundColor: this.state.scrolled ? '#ffffffb3' : 'transparent',
-                      backdropFilter: this.state.scrolled ? 'blur(10px)' : '',
-                      boxShadow: this.state.scrolled ? '0 8px 16px #0003' : '',
-                      transition: 'background-color 0.55s ease'
-            }}
-        >
+      <div className={css(headerClass)} style={headerStyle}>
       
         <img className={css(styles.img)} src={logo} alt="Holberton logo" />
-        {/* <h1 className={css(styles.h1)} >SCHOOL DASHBOARD</h1> */}
-        
+
         
         <div className={css(styles.navContainer)}>
-            <a href="#" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+            {/* -> when not logged in, in the home page:
+                      - on top, the header background color is transparent (black hero image) so the text color is white
+                      - on scroll, the header background color becomes white so nav text color turns black
+                -> when logged in or when it's not the home page, the background color of the headr is always white, so the text is black
+            */}
+            <a href="#" className={css(styles.nav)} style={{ color: this.state.scrolled || (isLoggedIn) || !isHomePage ? 'black' : 'white', transition: 'color 0.8s ease'}}>
                 Home
             </a>
 
-            <a href="#body" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+            <a href="#body" className={css(styles.nav)} style={{ color: this.state.scrolled || (isLoggedIn) || !isHomePage ? 'black' : 'white', transition: 'color 0.8s ease'}}>
                 Courses
             </a>
 
-            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled || (isLoggedIn) || !isHomePage ? 'black' : 'white', transition: 'color 0.8s ease'}}>
                 News
             </a>
 
-            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled ? 'black' : 'white', transition: 'color 0.8s ease'}}>
+            <a href="#news" className={css(styles.nav)} style={{ color: this.state.scrolled || (isLoggedIn) || !isHomePage ? 'black' : 'white', transition: 'color 0.8s ease'}}>
                 Updates
             </a>
             
         </div>
         
-        {/* user.email to confirm the user is logged in and has an email
 
-            The whole user object is {} when the user isn't logged in,
-            or set to null when the user logs out. In both case the check will be false
-        */}
-        { user && user.email ? (
+        { isLoggedIn ? (
             <div id="logoutSection" className={css(styles.logOut)}>
               <p style={{display: 'inline', margin: '0', color: 'grey'}}> {user.email}</p>
               <span onClick={logout} className={css(styles.logOutButton)}> logout</span>
             </div>
-          ) : (<button className={css(styles.loginButton)} style={{ backgroundColor: this.state.scrolled ? '#d2d2d2' : '#d2d2d238', transition: 'background-color 0.55s ease'}}>Login</button>)
+          ) : (
+            <button className={css(styles.loginButton)} style={{ backgroundColor: this.state.scrolled || !isHomePage ? '#d2d2d2' : '#d2d2d238', transition: 'background-color 0.55s ease'}}>
+              Login
+            </button>
+          )
         }
       </div>
     );
@@ -115,6 +143,20 @@ const styles = StyleSheet.create({
     top: '0',
     /*backdropFilter: 'blur(10px)',*/
     zIndex: '1',
+  },
+
+  AppHeaderArticlePage: {
+    display: 'flex',
+    alignItems: 'center',
+    color: '#e0354b',
+    width: '100%',
+    fontFamily: 'Poppins, sans-serif',
+    backgroundColor: '#ffffffb3',
+    boxShadow: '0 8px 16px #0003',
+    top: '0',
+    backdropFilter: 'blur(10px)',
+    zIndex: '1',
+    position: 'sticky',
   },
 
   img: {
@@ -210,6 +252,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   user: state.ui.get('user'),
+  isLoggedIn: state.ui.get('isUserLoggedIn'),
 });
 
 const mapDispatchToProps = {

@@ -58,7 +58,7 @@ export class Home extends Component {
         />
         
         <div className="Home">
-          <Header />
+          <Header isHomePage={true}/>
 
           <div className={css(styles.body)} >
             { isLoggedIn ? (
