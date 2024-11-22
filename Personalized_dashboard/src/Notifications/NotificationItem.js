@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         '@media (max-width: 900px)': {
             width: '-webkit-fill-available',
             listStyleType: 'none',
-            fontSize: '20px',
+            fontSize: '16px',
             padding: '10px 20px',
         },
         ':hover': {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         '@media (max-width: 900px)': {
             width: '-webkit-fill-available',
             listStyleType: 'none',
-            fontSize: '20px',
+            fontSize: '16px',
             padding: '10px 20px',
         },
         ':hover': {

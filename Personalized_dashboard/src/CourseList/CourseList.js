@@ -78,7 +78,7 @@ class CourseList extends Component {
 }
 
 CourseList.propTypes = {
-    listCourses: PropTypes.object,
+    listCourses: PropTypes.array,
     fetchCourses: PropTypes.func,
     selectCourse: PropTypes.func,
     unSelectCourse: PropTypes.func,
@@ -86,7 +86,7 @@ CourseList.propTypes = {
 };
 
 CourseList.defaultProps = {
-    listCourses: {},
+    listCourses: [],
     fetchCourses: () => {},
     selectCourse: () => {},
     unSelectCourse: () => {},

@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
             top: '0',
             left: '0',
             backgroundColor: 'white',
-            zIndex: '1',
+            zIndex: '2',
             border: 'none',
             fontSize: '20px',
             padding: '25px 25px 0px',

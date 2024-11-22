@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
   errorMessage: {
     color: '#e31c3f',
     margin: '0',
+    fontSize: '13px',
   },
 
   errorIcon: {
@@ -226,7 +227,7 @@ const styles = StyleSheet.create({
     borderRadius: '20px',
     height: '30px',
     //backgroundColor: '#d3d3d347',
-    backgroundColor: '#ffbeca',
+    backgroundColor: '#ffdce3',
     fontFamily: 'Poppins, sans-serif',
     marginTop: '15px',
 

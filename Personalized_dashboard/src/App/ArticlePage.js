@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from "../Header/Header";
 import BodySection from "../BodySection/BodySection";
 import { css, StyleSheet } from "aphrodite";
@@ -12,6 +12,8 @@ import NewsSectionGrid from "../News/NewsSectionGrid";
 import Updates from "../News/Updates";
 import { GoClock } from "react-icons/go";
 import News from "../News/News";
+import { getUpdateById, getUpdates } from "../selectors/updatesSelector";
+import { fetchUpdates } from "../actions/updatesActionCreators";
 
 
 
@@ -42,8 +44,8 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        // Adds new to the redux store
-        this.props.fetchNews();
+        // Adds news or updates to the redux store dependin on the path
+        this.props.path === "news" ? this.props.fetchNews() : this.props.fetchUpdates();
         window.scrollTo(0, 0);
     }
 
@@ -56,7 +58,7 @@ class Article extends Component {
     render () {
         // Get the article Id from URL params and nameit articleId
         const { id: articleId } = this.props.params;
-        const { article } = this.props;
+        const { article, path } = this.props;
 
         return (
             <Fragment>
@@ -68,10 +70,13 @@ class Article extends Component {
                         <BodySection>
                             <NewsSectionGrid>
                                 <div>
-                                    <p className={css(styles.path)}>Home / News / {article.title}</p>
+                                    <p className={css(styles.path)}>Home / { path === "news" ? "News" : "Updates" } / {article.title}</p>
                                     <p className={css(styles.date)}><GoClock /> {article.date}</p>
 
-                                    <img src={`/${article.image}`} alt="Article Image" className={css(styles.image)} />
+                                    { article.image ? (
+                                        <img src={`/${article.image}`} alt="Article Image" className={css(styles.image)} />
+                                    ) : (null)}
+                                    
 
                                     <h1 className={css(styles.title)}>{article.title}</h1>
                                     <h2 className={css(styles.subtitle)}>{article.subtitle}</h2>
@@ -177,14 +182,18 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-    // Get the id from the link
-    const newsId = ownProps.params.id;
+    const { path } = ownProps;
+    // either id of update or news clicked on
+    const id = ownProps.params.id;
+    let article = null;
 
-    // Get all the news
-    const news = getNews(state);
-
-    // Get the article by id from the news
-    const article = newsId && news.size > 0 ? getNewsById(state, newsId) : null;
+    if (path === "news") {
+        // Get the article by id from the news
+        article = getNewsById(state, id);
+    } else if (path === "update") {
+        // Get the article by id from the updates
+        article = getUpdateById(state, id);
+    }
 
     return {
         article: article
@@ -193,6 +202,7 @@ const mapStateToProps = (state, ownProps) => {
 
 export const mapDispatchToProps = {
     fetchNews,
+    fetchUpdates,
 };
 
 export default withParams(connect(mapStateToProps, mapDispatchToProps)(Article));

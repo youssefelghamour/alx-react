@@ -3,6 +3,20 @@ import React, { Component } from "react";
 import { getUpdates } from "../selectors/updatesSelector";
 import { fetchUpdates } from "../actions/updatesActionCreators";
 import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+
+
+// HOC to inject navigate into a class component since it only works with function components
+// Define a function that wraps a class component and adds new functionality (in this case, navigation)
+const withNavigate = (WrappedComponent) => { 
+    return function WithNavigate(props) { 
+        // 'useNavigate' hook provides navigation function, allowing us to redirect
+        const navigate = useNavigate(); 
+
+        // Return the wrapped component with all the original props and the new 'navigate' prop
+        return <WrappedComponent {...props} navigate={navigate} />; 
+    };
+};
 
 
 class Updates extends Component {
@@ -14,6 +28,11 @@ class Updates extends Component {
         this.props.fetchUpdates();
     }
 
+    handleClick = (id) => {
+        // Use navigate to redirect
+        this.props.navigate(`/update/${id}`);
+    };
+
     render() {
         const { listUpdates, fetchUpdates } = this.props;
 
@@ -23,7 +42,7 @@ class Updates extends Component {
 
                 { listUpdates ? (
                     listUpdates.map((update) => (
-                        <div className={css(styles.updateContainer)} key={update.id}>
+                        <div className={css(styles.updateContainer)} key={update.id} onClick={() => this.handleClick(update.id)}>
                             <p className={css(styles.updateType)}> {update.type} </p>
                             <p className={css(styles.updateTitle)}> {update.title} </p>
                             <p className={css(styles.updateDate)}> {update.date} </p>
@@ -83,4 +102,4 @@ export const mapDispatchToProps = {
     fetchUpdates,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Updates);
+export default withNavigate(connect(mapStateToProps, mapDispatchToProps)(Updates));

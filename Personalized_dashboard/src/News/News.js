@@ -30,7 +30,7 @@ class News extends Component {
 
     handleClick = (id) => {
         // Use navigate to redirect
-        this.props.navigate(`/article/${id}`);
+        this.props.navigate(`/news/${id}`);
     };
 
     render() {
