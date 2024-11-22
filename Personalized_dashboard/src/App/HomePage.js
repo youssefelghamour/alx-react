@@ -28,6 +28,7 @@ export class Home extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
+    window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {

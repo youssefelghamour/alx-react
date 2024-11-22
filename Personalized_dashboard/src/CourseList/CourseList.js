@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import CourseListRow from './CourseListRow';
 import PropTypes from "prop-types";
 import { StyleSheet, css } from "aphrodite";
-import { fetchCourses, selectCourse, unSelectCourse } from "../actions/courseActionCreators";
+import { fetchCourses } from "../actions/courseActionCreators";
 import { getCourses } from "../selectors/courseSelector";
 import { connect } from "react-redux";
+import { selectCourse, unSelectCourse } from "../actions/uiActionCreators";
 
 
 class CourseList extends Component {
@@ -14,7 +15,8 @@ class CourseList extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchCourses();
+        // fetches courses from courses.json (not needed anymore, we're fetching from user.courses)
+        // this.props.fetchCourses();
     }
 
     onChangeRow(id, checked) {
@@ -37,7 +39,7 @@ class CourseList extends Component {
                         <p style={{margin: '0',}}>Upcoming Evaluations: <strong>Exam - Dec 5</strong></p>
                     </div>
                     <div style={{alignSelf: 'end'}}>
-                        <p style={{margin: '0', float: 'inline-end'}}>Enrolled Courses: <strong>{listCourses.size}</strong></p>
+                        <p style={{margin: '0', float: 'inline-end'}}>Enrolled Courses: <strong>{listCourses.length}</strong></p>
                     </div>
                 </div>
 
@@ -105,7 +107,8 @@ const styles = StyleSheet.create({
 });
 
 export const mapStateToProps = (state) => ({
-    listCourses: getCourses(state),
+    // Convert courses js object to an array
+    listCourses: Object.values(state.ui.get('user').courses),
     user: state.ui.get('user'),
 });
 

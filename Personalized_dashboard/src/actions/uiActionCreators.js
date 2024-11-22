@@ -1,4 +1,4 @@
-import { DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from "./uiActionTypes";
+import { DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, SELECT_COURSE, UNSELECT_COURSE } from "./uiActionTypes";
 
 
 export const login = (user) => ({
@@ -28,6 +28,18 @@ export const hideNotificationDrawer = () => ({
 });
 
 export const boundHideNotificationDrawer = () => dispatch(hideNotificationDrawer());
+
+
+export const selectCourse = (index) => ({
+    type: SELECT_COURSE,
+    index,
+});
+
+
+export const unSelectCourse = (index) => ({
+    type: UNSELECT_COURSE,
+    index,
+});
 
 
 export const loginSuccess = () => ({
