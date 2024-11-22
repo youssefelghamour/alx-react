@@ -5,6 +5,9 @@ import Header from "../Header/Header";
 import BodySection from "../BodySection/BodySection";
 import { css, StyleSheet } from "aphrodite";
 import { Footer } from "../Footer/Footer";
+import { connect } from "react-redux";
+import { getNews, getNewsById } from "../selectors/newsSelector";
+import { fetchNews } from "../actions/newsActionCreators";
 
 
 /* HOC that adds URL params to a class component,
@@ -29,47 +32,50 @@ const withParams = (WrappedComponent) => {
 
 
 class Article extends Component {
-    render () {
-        const { id } = this.props.params; // Get the article ID from URL params
+    constructor(props) {
+        super(props);
+    }
 
-        // Example article
-        const article = {
-            title: "Title",
-            date: "November 19, 2024",
-            content: `
-                
-            `,
-            image: "image",
-        };
+    componentDidMount() {
+        // Adds new to the redux store
+        this.props.fetchNews();
+    }
+
+    render () {
+        // Get the article Id from URL params and nameit articleId
+        const { id: articleId } = this.props.params;
 
         return (
             <Fragment>
                 <Header />
                 
-                <div className={css(styles.body)}>
+                { this.props.article ? (
+                    <div className={css(styles.body)}>
 
-                    <BodySection subtitle="News from the School">
-                        <div>
-                            <h1 className="articleTitle">{article.title}</h1>
+                        <BodySection subtitle="News from the School">
+                            <div>
+                                <h1 className="articleTitle">{this.props.article.title}</h1>
 
-                            <div className="article-content">
-                                <img src={article.image} alt="Article Image" className="articleImage" />
-                                <div>
-                                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Cras natoque leo mi himenaeos mattis.</p>
-                                    <p><strong>Subheading 1:</strong> Here is a subheading with more details:</p>
-                                    <ul>
-                                        <li>Point 1</li>
-                                        <li>Point 2</li>
-                                        <li>Point 3</li>
-                                    </ul>
-                                    <p>End of the article content</p>
+                                <div className="article-content">
+                                    <img src={this.props.article.img} alt="Article Image" className="articleImage" />
+                                    <div>
+                                        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Cras natoque leo mi himenaeos mattis.</p>
+                                        <p><strong>Subheading 1:</strong> Here is a subheading with more details:</p>
+                                        <ul>
+                                            <li>Point 1</li>
+                                            <li>Point 2</li>
+                                            <li>Point 3</li>
+                                        </ul>
+                                        <p>End of the article content</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <button onClick={() => this.props.navigate("/")} className="backHomeButton">Back to Home</button>
-                        </div>
-                    </BodySection>
-                </div>
+                                <button onClick={() => this.props.navigate("/")} className="backHomeButton">Back to Home</button>
+                            </div>
+                        </BodySection>
+                    </div>
+                ) : (null)}
+                
 
                 <div className={css(styles.footer)} >
                     <Footer />
@@ -104,4 +110,23 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withParams(Article);
+const mapStateToProps = (state, ownProps) => {
+    // Get the id from the link
+    const newsId = ownProps.params.id;
+
+    // Get all the news
+    const news = getNews(state);
+
+    // Get the article by id from the news
+    const article = newsId && news.size > 0 ? getNewsById(state, newsId) : null;
+
+    return {
+        article: article
+    };
+};
+
+export const mapDispatchToProps = {
+    fetchNews,
+};
+
+export default withParams(connect(mapStateToProps, mapDispatchToProps)(Article));
