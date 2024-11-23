@@ -9,9 +9,8 @@ This repository contains a series of React projects that build a React app, focu
 - [Overview](#overview)
 - [Tools & Libraries Used](#tools--libraries-used)
 - [Setup](#setup)
-- [Preview](#preview)
+- [Demo Video](#demo-video)
 - [Projects](#projects)
-  - [Dashboard](#personalized-dashboard)
   - [0x00. Webpack](#0x00-webpack)
   - [0x01. React Intro](#0x01-react-intro)
   - [0x02. React Props](#0x02-react-props)
@@ -22,6 +21,7 @@ This repository contains a series of React projects that build a React app, focu
   - [0x07. React Redux Action Creator & Normalizr](#0x07-react-redux-action-creator-normalizr)
   - [0x08. React Redux Reducer & Selector](#0x08-react-redux-reducer-selector)
   - [0x09. React Redux Connectors and Providers](#0x09-react-redux-connectors-and-providers)
+  - [Personalized Dashboard](#personalized-dashboard)
 
 ## Tools & Libraries Used
 
@@ -55,27 +55,7 @@ npm start
 
 https://github.com/user-attachments/assets/107979b3-20d0-4cf3-9ec5-029b93b82900
 
-## Preview
-
-Below are screenshots of the final product **Personalized_dashboard**, showcasing the user interface and features:
-
-### Logged Out:
-
-![App Screenshot](./Personalized_dashboard/src/assets/Screenshot_loddegOut.jpeg)
-
-### Logged In:
-
-![App Screenshot](./Personalized_dashboard/src/assets/Screenshot_loddegIn.jpeg)
-
 ## Projects
-
-### [Personalized Dashboard](./Personalized_dashboard/)
-**Overview**: I added more components (News and Updates) to the final project, that use Redux for state management and fetch data from an API. The page has also been styled to provide a better user experience.
-
-**What was done**:
-- Added **News** and **Updates** components, which fetch data from an API.
-- Integrated **Redux** for managing state in these new components.
-- Enhanced the page’s styling for a more polished look.
 
 ### [0x00. Webpack](./0x00-Webpack/)
 **Overview**: Introduces setting up Webpack for a React project. This project covers the basic Webpack configuration, bundling JavaScript files, and handling assets like images and stylesheets.
@@ -142,12 +122,8 @@ Below are screenshots of the final product **Personalized_dashboard**, showcasin
 
 **What was done**:
 - Implemented Redux for global state management in the app.
-- Used Redux Thunk for handling asynchronous action creators.
+- Used Redux Thunk for handling asynchronous action creators (API calls).
 - Normalized API response data using Normalizr to improve state management.
-
-#### Key Tasks:
-- **Async Actions**: Managed asynchronous operations (like API calls) in Redux actions.
-- **State Normalization**: Used Normalizr to optimize handling of nested data structures in API responses.
 
 ### [0x08. React Redux Reducer & Selector](./0x08-react_redux_reducer_selector/)
 **Overview**: Explores Redux reducers, selectors, and performance optimizations in state management.
@@ -164,3 +140,11 @@ Below are screenshots of the final product **Personalized_dashboard**, showcasin
 - Used `connect` to link Redux state and actions with React components.
 - Set up Redux providers to make the store available across the app.
 - Managed global application state in a scalable manner with Redux.
+
+### [Personalized Dashboard](./Personalized_dashboard/)
+**Overview**: Added more components to the final project, implemented routing for better navigation between pages and components, and styled the page to enhance the user experience.
+
+**What was done**:
+- Added new components to extend functionality.
+- Implemented routing for seamless navigation.
+- Improved styling for a polished and user-friendly design.
